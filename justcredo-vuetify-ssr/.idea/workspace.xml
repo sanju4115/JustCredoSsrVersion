@@ -1,0 +1,548 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="4a680e74-7227-4eae-b616-bf0ad9f1244e" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/sanjaykumar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/TopCategoryWise.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/addPlace/Address.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/addPlace/MusicClassForm.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/addPlace/SchoolForm.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/addPlace/SportsClassForm.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/alerts/ErrorAlert.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/distance/DistanceForm.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/distance/PlaceLocation.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/footer/Footer.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/list/EntityFilter.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/navigationDrawer/NavigationDrawer.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/place/School.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/place/SchoolDynamic.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/place/Sponsored.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/toolbar/DistanceMenu.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/toolbar/NotificationToolbar.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/toolbar/ProfileMenu.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/toolbar/Toolbar.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/utils/AlphaListFeature.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/utils/AlphaTestimonial.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/utils/BlogBody.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/utils/BlogHeader.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/utils/FeedSchoolHeader.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/utils/FeedUserHeader.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/utils/Header.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/utils/ImageCarousel.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/utils/ImageListView.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/utils/ImageSelectAndPreview.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/utils/LoginAndRegister.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/utils/ReviewBody.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/utils/ReviewPost.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/utils/TextWithStar.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/utils/formUtil/AddressWithFetch.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/utils/formUtil/AlphaCardFeature.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/utils/formUtil/BoardsAndClasses.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/utils/formUtil/ButtonGroup.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/utils/formUtil/CategoriesAndGender.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/utils/formUtil/Description.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/utils/formUtil/FacilitiesLike.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/utils/formUtil/Login.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/utils/formUtil/MusicClassInput.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/utils/formUtil/Register.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/utils/formUtil/SubjectClasses.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/constants/images.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/middleware/about.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/middleware/categories.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/middleware/schoolsCategoryWise.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/about.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/addPlace.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/downloads.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/list/_category/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/login.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/mission.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/partners.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/place/_id/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/place/_id/index/FacilityAndExtra.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/place/_id/index/Gallery.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/place/_id/index/PlaceBlogs.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/place/_id/index/PlaceReviews.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/place/_id/index/SchoolClasses.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/place/_id/index/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/services.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugins/fireauth.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/plugins/location.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/firebaseConfig.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/firebaseInit.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/images/home/142138-OTFFC4-187_test-02.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/images/home/categories_bkgrnd.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/images/home/top_classroom_banner.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/images/logos/logo_web.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/js/css3-animate-it.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/js/firebase-messaging-sw.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/store/categories.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/store/contents.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/store/filters.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/store/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/store/location.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/store/login.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/store/register.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/store/review.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/store/school.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/store/shared.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/utils/EntityConstants.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/utils/LocationUtil.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/utils/SchoolFormValidation.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/utils/SchoolUtil.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/utils/TImeUtil.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/utils/Util.js" afterDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/.tmp/" />
+    <ignored path="$PROJECT_DIR$/temp/" />
+    <ignored path="$PROJECT_DIR$/tmp/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="justcredo-vuetify-ssr" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+        <option value="Vue Single File Component" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>/home</find>
+      <find>setIsUserAdmin</find>
+      <find>user</find>
+      <find>LoginAndRegister</find>
+      <find>Login</find>
+      <find>shared/clearUser</find>
+      <find>welcome</find>
+      <find>google</find>
+      <find>css3-animate-it.js</find>
+      <find>xyz</find>
+      <find>ReviewPost</find>
+      <find>SchoolClasses</find>
+      <find>id</find>
+      <find>category</find>
+      <find>welcomeP</find>
+      <find>AlphaListFeature</find>
+      <find>Discover</find>
+      <find>@/c</find>
+      <find>@/components/utils/SchoolUtil</find>
+      <find>@/sevices/firebaseInit</find>
+      <find>fluid pa-0</find>
+      <find>danceClass</find>
+      <find>Chess</find>
+      <find>sportsFilters</find>
+      <find>specialFacilities</find>
+      <find>schoolType</find>
+      <find>ref</find>
+      <find>form</find>
+      <find>$forceUpdate</find>
+      <find>clearSchools</find>
+    </findStrings>
+    <replaceStrings>
+      <replace />
+    </replaceStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GradleLocalSettings">
+    <option name="externalProjectsViewState">
+      <projects_view />
+    </option>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/store/login.js" />
+        <option value="$PROJECT_DIR$/components/toolbar/ProfileMenu.vue" />
+        <option value="$PROJECT_DIR$/components/utils/AlphaListFeature.vue" />
+        <option value="$PROJECT_DIR$/pages/about/index.vue" />
+        <option value="$PROJECT_DIR$/plugins/appContent.js" />
+        <option value="$PROJECT_DIR$/middleware/categories.js" />
+        <option value="$PROJECT_DIR$/store/index.js" />
+        <option value="$PROJECT_DIR$/store/categories.js" />
+        <option value="$PROJECT_DIR$/nuxt.config.js" />
+        <option value="$PROJECT_DIR$/middleware/about.js" />
+        <option value="$PROJECT_DIR$/pages/downloads.vue" />
+        <option value="$PROJECT_DIR$/pages/place/services.vue" />
+        <option value="$PROJECT_DIR$/pages/services.vue" />
+        <option value="$PROJECT_DIR$/pages/partners.vue" />
+        <option value="$PROJECT_DIR$/components/utils/AlphaTestimonial.vue" />
+        <option value="$PROJECT_DIR$/pages/about.vue" />
+        <option value="$PROJECT_DIR$/components/list/EntityFilter.vue" />
+        <option value="$PROJECT_DIR$/components/place/School.vue" />
+        <option value="$PROJECT_DIR$/components/utils/formUtil/AddressWithFetch.vue" />
+        <option value="$PROJECT_DIR$/store/location.js" />
+        <option value="$PROJECT_DIR$/components/toolbar/DistanceMenu.vue" />
+        <option value="$PROJECT_DIR$/components/navigationDrawer/NavigationDrawer.vue" />
+        <option value="$PROJECT_DIR$/components/toolbar/Toolbar.vue" />
+        <option value="$PROJECT_DIR$/plugins/location.js" />
+        <option value="$PROJECT_DIR$/pages/index.vue" />
+        <option value="$PROJECT_DIR$/components/utils/LoginAndRegister.vue" />
+        <option value="$PROJECT_DIR$/components/distance/PlaceLocation.vue" />
+        <option value="$PROJECT_DIR$/constants/images.js" />
+        <option value="$PROJECT_DIR$/components/utils/formUtil/Login.vue" />
+        <option value="$PROJECT_DIR$/pages/login.vue" />
+        <option value="$PROJECT_DIR$/pages/mission.vue" />
+        <option value="$PROJECT_DIR$/components/VuetifyLogo.vue" />
+        <option value="$PROJECT_DIR$/plugins/vuetify.js" />
+        <option value="$PROJECT_DIR$/components/utils/formUtil/MusicClassForm.vue" />
+        <option value="$PROJECT_DIR$/components/utils/formUtil/MusicClassInput.vue" />
+        <option value="$PROJECT_DIR$/utils/EntityConstants.js" />
+        <option value="$PROJECT_DIR$/pages/list/_category/index.vue" />
+        <option value="$PROJECT_DIR$/utils/SchoolUtil.js" />
+        <option value="$PROJECT_DIR$/pages/addPlace.vue" />
+        <option value="$PROJECT_DIR$/components/utils/formUtil/CategoriesAndGender.vue" />
+        <option value="$PROJECT_DIR$/components/utils/formUtil/FacilitiesLike.vue" />
+        <option value="$PROJECT_DIR$/components/addPlace/SchoolForm.vue" />
+        <option value="$PROJECT_DIR$/components/addPlace/MusicClassForm.vue" />
+        <option value="$PROJECT_DIR$/components/utils/formUtil/SubjectClasses.vue" />
+        <option value="$PROJECT_DIR$/components/addPlace/SportsClassForm.vue" />
+        <option value="$PROJECT_DIR$/utils/SchoolFormValidation.js" />
+        <option value="$PROJECT_DIR$/utils/LocationUtil.js" />
+        <option value="$PROJECT_DIR$/layouts/default.vue" />
+        <option value="$PROJECT_DIR$/middleware/schoolsCategoryWise.js" />
+        <option value="$PROJECT_DIR$/components/utils/formUtil/ButtonGroup.vue" />
+        <option value="$PROJECT_DIR$/components/distance/DistanceForm.vue" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER">
+    <package-json value="$PROJECT_DIR$/package.json" />
+  </component>
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="NodeModulesDirectoryManager">
+    <handled-path value="$PROJECT_DIR$/node_modules" />
+  </component>
+  <component name="ProjectFrameBounds" fullScreen="true">
+    <option name="y" value="23" />
+    <option name="width" value="1440" />
+    <option name="height" value="812" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <autoscrollToSource ProjectPane="true" />
+      <autoscrollFromSource ProjectPane="true" />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="justcredo-vuetify-ssr" type="b2602c69:ProjectViewProjectNode" />
+              <item name="justcredo-vuetify-ssr" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="justcredo-vuetify-ssr" type="b2602c69:ProjectViewProjectNode" />
+              <item name="justcredo-vuetify-ssr" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="justcredo-vuetify-ssr" type="b2602c69:ProjectViewProjectNode" />
+              <item name="justcredo-vuetify-ssr" type="462c0819:PsiDirectoryNode" />
+              <item name="constants" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="justcredo-vuetify-ssr" type="b2602c69:ProjectViewProjectNode" />
+              <item name="justcredo-vuetify-ssr" type="462c0819:PsiDirectoryNode" />
+              <item name="layouts" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="justcredo-vuetify-ssr" type="b2602c69:ProjectViewProjectNode" />
+              <item name="justcredo-vuetify-ssr" type="462c0819:PsiDirectoryNode" />
+              <item name="middleware" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="justcredo-vuetify-ssr" type="b2602c69:ProjectViewProjectNode" />
+              <item name="justcredo-vuetify-ssr" type="462c0819:PsiDirectoryNode" />
+              <item name="pages" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="justcredo-vuetify-ssr" type="b2602c69:ProjectViewProjectNode" />
+              <item name="justcredo-vuetify-ssr" type="462c0819:PsiDirectoryNode" />
+              <item name="pages" type="462c0819:PsiDirectoryNode" />
+              <item name="list" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="justcredo-vuetify-ssr" type="b2602c69:ProjectViewProjectNode" />
+              <item name="justcredo-vuetify-ssr" type="462c0819:PsiDirectoryNode" />
+              <item name="pages" type="462c0819:PsiDirectoryNode" />
+              <item name="list" type="462c0819:PsiDirectoryNode" />
+              <item name="_category" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="justcredo-vuetify-ssr" type="b2602c69:ProjectViewProjectNode" />
+              <item name="justcredo-vuetify-ssr" type="462c0819:PsiDirectoryNode" />
+              <item name="pages" type="462c0819:PsiDirectoryNode" />
+              <item name="place" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="justcredo-vuetify-ssr" type="b2602c69:ProjectViewProjectNode" />
+              <item name="justcredo-vuetify-ssr" type="462c0819:PsiDirectoryNode" />
+              <item name="pages" type="462c0819:PsiDirectoryNode" />
+              <item name="place" type="462c0819:PsiDirectoryNode" />
+              <item name="_id" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="justcredo-vuetify-ssr" type="b2602c69:ProjectViewProjectNode" />
+              <item name="justcredo-vuetify-ssr" type="462c0819:PsiDirectoryNode" />
+              <item name="plugins" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="justcredo-vuetify-ssr" type="b2602c69:ProjectViewProjectNode" />
+              <item name="justcredo-vuetify-ssr" type="462c0819:PsiDirectoryNode" />
+              <item name="store" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="justcredo-vuetify-ssr" type="b2602c69:ProjectViewProjectNode" />
+              <item name="justcredo-vuetify-ssr" type="462c0819:PsiDirectoryNode" />
+              <item name="utils" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="SearchEverywhereHistoryKey" value="schoolsCategoryWise&#9;FILE&#9;file:///Users/sanjaykumar/Desktop/Personal/Workspace/just-credo-ssr/justcredo-vuetify-ssr/middleware/schoolsCategoryWise.js&#10;Mus&#9;FILE&#9;file:///Users/sanjaykumar/Desktop/Personal/Workspace/just-credo-ssr/justcredo-vuetify-ssr/components/addPlace/MusicClassForm.vue&#10;Fa&#9;FILE&#9;file:///Users/sanjaykumar/Desktop/Personal/Workspace/just-credo-ssr/justcredo-vuetify-ssr/components/utils/formUtil/FacilitiesLike.vue&#10;Ent&#9;FILE&#9;file:///Users/sanjaykumar/Desktop/Personal/Workspace/just-credo-ssr/justcredo-vuetify-ssr/utils/EntityConstants.js&#10;Cat&#9;FILE&#9;file:///Users/sanjaykumar/Desktop/Personal/Workspace/just-credo-ssr/justcredo-vuetify-ssr/components/utils/formUtil/CategoriesAndGender.vue&#10;Fac&#9;FILE&#9;file:///Users/sanjaykumar/Desktop/Personal/Workspace/just-credo-ssr/justcredo-vuetify-ssr/components/utils/formUtil/FacilitiesLike.vue&#10;Boards&#9;FILE&#9;file:///Users/sanjaykumar/Desktop/Personal/Workspace/just-credo-ssr/justcredo-vuetify-ssr/components/utils/formUtil/BoardsAndClasses.vue&#10;Schoo&#9;FILE&#9;file:///Users/sanjaykumar/Desktop/Personal/Workspace/just-credo-ssr/justcredo-vuetify-ssr/utils/SchoolUtil.js&#10;Facili&#9;FILE&#9;file:///Users/sanjaykumar/Desktop/Personal/Workspace/just-credo-ssr/justcredo-vuetify-ssr/components/utils/formUtil/FacilitiesLike.vue&#10;image&#9;FILE&#9;file:///Users/sanjaykumar/Desktop/Personal/Workspace/just-credo-ssr/justcredo-vuetify-ssr/constants/images.js&#10;im&#9;null&#9;null&#10;Navi&#9;FILE&#9;file:///Users/sanjaykumar/Desktop/Personal/Workspace/just-credo-ssr/justcredo-vuetify-ssr/components/navigationDrawer&#10;Tool&#9;FILE&#9;file:///Users/sanjaykumar/Desktop/Personal/Workspace/just-credo-ssr/justcredo-vuetify-ssr/components/toolbar/Toolbar.vue&#10;to&#9;FILE&#9;file:///Users/sanjaykumar/Desktop/Personal/Workspace/just-credo-ssr/justcredo-vuetify-ssr/components/toolbar/Toolbar.vue&#10;Login&#9;FILE&#9;file:///Users/sanjaykumar/Desktop/Personal/Workspace/just-credo-ssr/justcredo-vuetify-ssr/components/utils/formUtil/Login.vue&#10;Na&#9;FILE&#9;file:///Users/sanjaykumar/Desktop/Personal/Workspace/just-credo-ssr/justcredo-vuetify-ssr/components/navigationDrawer/NavigationDrawer.vue&#10;images&#9;FILE&#9;file:///Users/sanjaykumar/Desktop/Personal/Workspace/just-credo-ssr/justcredo-vuetify-ssr/constants/images.js&#10;vue&#9;FILE&#9;file:///Users/sanjaykumar/Desktop/Personal/Workspace/just-credo-ssr/justcredo-vuetify-ssr/plugins/vuetify.js&#10;vuetif&#9;FILE&#9;file:///Users/sanjaykumar/Desktop/Personal/Workspace/just-credo-ssr/justcredo-vuetify-ssr/plugins/vuetify.js&#10;Navigation&#9;FILE&#9;file:///Users/sanjaykumar/Desktop/Personal/Workspace/just-credo-ssr/justcredo-vuetify-ssr/components/navigationDrawer/NavigationDrawer.vue&#10;Toolb&#9;FILE&#9;file:///Users/sanjaykumar/Desktop/Personal/Workspace/just-credo-ssr/justcredo-vuetify-ssr/components/toolbar/Toolbar.vue&#10;Pic&#9;null&#9;null&#10;Too&#9;FILE&#9;file:///Users/sanjaykumar/Desktop/Personal/Workspace/just-credo-ssr/justcredo-vuetify-ssr/components/toolbar/Toolbar.vue" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.prettier" value="true" />
+    <property name="node.js.path.for.package.prettier" value="project" />
+    <property name="node.js.selected.package.prettier" value="$PROJECT_DIR$/node_modules/prettier" />
+    <property name="nodejs_interpreter_path" value="/usr/local/bin/node" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/components/utils/formUtil" />
+      <recent name="$PROJECT_DIR$/pages" />
+      <recent name="$PROJECT_DIR$/pages/home" />
+      <recent name="$PROJECT_DIR$/pages/place/_id/index" />
+      <recent name="$PROJECT_DIR$/pages/place/_id" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/components/distance" />
+      <recent name="$PROJECT_DIR$/components/utils" />
+      <recent name="$PROJECT_DIR$/components" />
+      <recent name="$PROJECT_DIR$/components/place" />
+      <recent name="$PROJECT_DIR$/pages/place/_id" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Node.js.schoolsCategoryWise.js">
+    <configuration name="firebaseInit.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/services/firebaseInit.js" working-dir="$PROJECT_DIR$/components" />
+    <configuration name="schoolsCategoryWise.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" nameIsGenerated="true" path-to-js-file="schoolsCategoryWise.js" working-dir="$PROJECT_DIR$/middleware" />
+    <configuration name="shared.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" nameIsGenerated="true" path-to-js-file="shared.js" working-dir="$PROJECT_DIR$/store" />
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <module />
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+    </configuration>
+    <configuration default="true" type="Remote" factoryName="Remote">
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" value="javadebug" />
+      <option name="HOST" value="localhost" />
+      <option name="PORT" value="5005" />
+    </configuration>
+    <configuration default="true" type="TestNG" factoryName="TestNG">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <envs />
+      <properties />
+      <listeners />
+    </configuration>
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
+      <module name="" />
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
+      <option name="PROGRAM_PARAMETERS" />
+      <predefined_log_file id="idea.log" enabled="true" />
+    </configuration>
+    <list>
+      <item itemvalue="Node.js.firebaseInit.js" />
+      <item itemvalue="Node.js.shared.js" />
+      <item itemvalue="Node.js.schoolsCategoryWise.js" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Node.js.schoolsCategoryWise.js" />
+        <item itemvalue="Node.js.shared.js" />
+        <item itemvalue="Node.js.firebaseInit.js" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4a680e74-7227-4eae-b616-bf0ad9f1244e" name="Default" comment="" />
+      <created>1528646378736</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1528646378736</updated>
+      <workItem from="1528646381633" duration="88000" />
+      <workItem from="1528648297967" duration="1556000" />
+      <workItem from="1528649958544" duration="101000" />
+      <workItem from="1528650085999" duration="51000" />
+      <workItem from="1528650194779" duration="37477000" />
+      <workItem from="1529027683885" duration="60073000" />
+      <workItem from="1529146393570" duration="31259000" />
+      <workItem from="1529241238487" duration="21160000" />
+      <workItem from="1529509875384" duration="2503000" />
+      <workItem from="1529593499724" duration="16419000" />
+      <workItem from="1531323068430" duration="367000" />
+      <workItem from="1532776428588" duration="724000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="171778000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49872124" visible="true" weight="0.1726568" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32880098" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3286445" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.3286445" />
+      <window_info id="npm" order="2" side_tool="true" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.35421994" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info id="Favorites" order="2" sideWeight="0.50127876" side_tool="true" weight="0.1726568" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" id="Theme Preview" order="3" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info id="Image Layers" order="2" />
+      <window_info id="Designer" order="2" />
+      <window_info id="UI Designer" order="2" />
+      <window_info anchor="right" id="Capture Analysis" order="3" />
+      <window_info anchor="right" id="Database" order="3" />
+      <window_info anchor="right" id="Palette&#9;" order="3" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info id="Capture Tool" order="2" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3286445" />
+      <window_info anchor="right" id="Maven Projects" order="3" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="3" />
+    </breakpoint-manager>
+  </component>
+</project>
