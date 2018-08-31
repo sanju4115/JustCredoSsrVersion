@@ -1,6 +1,6 @@
 <template>
   <v-navigation-drawer
-    touchless
+    stateless
     v-bind:class="{navigationBar:$vuetify.breakpoint.lgAndUp}"
     class="indicatorColor"
     dark
