@@ -1,5 +1,6 @@
 export default {
   state: () => ({
+    //default value
     loading: false,
     error: null,
     areaSelected: "geohash50",
@@ -18,9 +19,7 @@ export default {
       state.error = null;
     },
     setAreaSelected(state, payload) {
-      console.log("start areaChange");
       state.areaSelected = payload.area;
-      console.log("end areaChange");
     },
     setDrawerState(state) {
       state.drawerState = !state.drawerState;
@@ -40,7 +39,7 @@ export default {
       commit("setDrawerState");
     },
     isServiceAvailable({ commit }, payload) {
-      commit(payload);
+      commit("setServiceAvailable", payload);
     }
   },
   getters: {

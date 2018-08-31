@@ -1,5 +1,5 @@
 <template>
-  <div class="text-xs-center" v-if="location">
+  <div class="text-xs-center">
     <v-menu
       offset-x
       :close-on-content-click="false"
@@ -10,7 +10,7 @@
         <v-avatar>
           <v-icon small>location_on</v-icon>
         </v-avatar>
-        {{location.locality}}
+        {{location}}
       </v-chip>
       <DistanceForm class="mt-4"></DistanceForm>
     </v-menu>
@@ -23,11 +23,15 @@ export default {
   name: "DistanceMenu",
   components: {DistanceForm},
   data: () => ({
-    menu: false
+    menu: false,
   }),
   computed:{
     location(){
-      return this.$store.getters["location/location"];
+      let location = this.$store.getters["location/location"];
+      if(location === undefined || location === null){
+              return "Choose Address";
+      }
+      return location.locality;
     }
   }
 };
