@@ -41,6 +41,9 @@ export default async function({ store }) {
   }
   store.dispatch("school/storeSchools", { data: schoolsForStoring }); //storing to the store to use in future
   if (schoolsForStoring.length === 0) {
+    console.log("setting service availabel to false");
     store.dispatch("shared/isServiceAvailable", false); //setting service availabel to false
+  } else {
+    store.dispatch("shared/isServiceAvailable", true); //setting service availabel to true
   }
 }

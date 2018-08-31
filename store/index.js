@@ -7,6 +7,5 @@ export default {
         dispatch('categories/nuxtServerInit', context)
       ]);
     }
-  }
+  },
 };
-

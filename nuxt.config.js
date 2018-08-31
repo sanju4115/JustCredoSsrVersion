@@ -1,9 +1,9 @@
-const pkg = require('./package')
+const pkg = require("./package");
 
-const nodeExternals = require('webpack-node-externals')
+const nodeExternals = require("webpack-node-externals");
 
 module.exports = {
-  mode: 'universal',
+  mode: "universal",
 
   /*
   ** Headers of the page
@@ -11,35 +11,38 @@ module.exports = {
   head: {
     title: pkg.name,
     meta: [
-      { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: pkg.description }
+      { charset: "utf-8" },
+      { name: "viewport", content: "width=device-width, initial-scale=1" },
+      { hid: "description", name: "description", content: pkg.description }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' }
+      { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
+      {
+        rel: "stylesheet",
+        href:
+          "https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons"
+      }
     ]
   },
 
   /*
   ** Customize the progress-bar color
   */
-  loading: { color: '#FFFFFF' },
+  loading: { color: "#FFFFFF" },
 
   /*
   ** Global CSS
   */
-  css: [
-    'vuetify/src/stylus/main.styl'
-  ],
+  css: ["vuetify/src/stylus/main.styl"],
 
   /*
   ** Plugins to load before mounting the App
   */
   plugins: [
-    '@/plugins/vuetify',
-    '@/plugins/fireauth',
-    '@/plugins/location'
+    "@/plugins/vuetify",
+    "@/plugins/fireauth",
+    "@/plugins/location",
+    { src: "@/plugins/localStorage.js", ssr: false }
   ],
 
   /*
@@ -47,7 +50,7 @@ module.exports = {
   */
   modules: [
     // Doc: https://github.com/nuxt-community/axios-module#usage
-    '@nuxtjs/axios'
+    "@nuxtjs/axios"
   ],
   /*
   ** Axios module configuration
@@ -64,14 +67,13 @@ module.exports = {
     ** You can extend webpack config here
     */
     extend(config, ctx) {
-
       if (ctx.isServer) {
         config.externals = [
           nodeExternals({
             whitelist: [/^vuetify/]
           })
-        ]
+        ];
       }
     }
   }
-}
+};

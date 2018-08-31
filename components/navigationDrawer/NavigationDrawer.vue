@@ -1,5 +1,6 @@
 <template>
   <v-navigation-drawer
+    touchless
     v-bind:class="{navigationBar:$vuetify.breakpoint.lgAndUp}"
     class="indicatorColor"
     dark
@@ -71,7 +72,6 @@ export default {
         this.$store.getters["login/user"] !== undefined
       );
     },
-
     drawerStateChanged() {
       return this.drawerState;
     }
