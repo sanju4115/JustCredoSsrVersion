@@ -109,7 +109,9 @@ export default {
       return this.$store.getters["location/loading"];
     },
     location() {
-      return this.$store.getters["location/location"];
+      const location = this.$store.getters["location/location"]
+      this.$cookies.set("location", location);
+      return location;
     }
   }
 };

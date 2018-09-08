@@ -24,8 +24,11 @@ export default {
   data() {
     return {
       dialog: false,
-      drawer: true
+      drawer: false
     };
+  },
+  mounted(){
+    this.drawer = true
   },
   computed: {},
   head() {

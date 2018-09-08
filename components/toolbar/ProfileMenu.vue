@@ -110,7 +110,9 @@ export default {
   },
   computed: {
     user() {
-      return this.$store.getters["login/user"];
+      const user = this.$store.getters["login/user"];
+      this.$cookies.set("user",user);
+      return user;
     },
     isUserAdmin() {
       return this.$store.getters["login/isUserAdmin"];

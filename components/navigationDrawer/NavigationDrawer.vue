@@ -7,7 +7,7 @@
     fixed
     :clipped="$vuetify.breakpoint.lgAndUp"
     app
-    :value="drawerStateChanged">
+    :value="drawerState">
     <v-list>
       <template v-for="item in items">
         <v-layout row v-if="item.heading" align-center :key="item.heading">
@@ -71,14 +71,6 @@ export default {
         this.$store.getters["login/user"] !== null &&
         this.$store.getters["login/user"] !== undefined
       );
-    },
-    drawerStateChanged() {
-      return this.drawerState;
-    }
-  },
-  watch: {
-    drawerStateChanged() {
-      this.$emit("toggleDrawerState");
     }
   },
   data: () => ({
@@ -92,7 +84,7 @@ export default {
       {
         icon: "home",
         text: "Home",
-        link: "/home"
+        link: "/"
       },
       {
         icon: "pages",

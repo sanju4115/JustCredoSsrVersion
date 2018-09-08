@@ -164,9 +164,6 @@ export default {
     },
     coachingClass(state) {
       return state.coachingClass;
-    },
-    clearSchools(state) {
-      state.loadedSchools = [];
     }
   }
 };
