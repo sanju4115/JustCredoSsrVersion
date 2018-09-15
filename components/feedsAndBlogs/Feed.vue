@@ -60,7 +60,6 @@ export default {
     LIMIT: 10,
     areaSelected: null,
     firstTime: true,
-    sticky:null,
     sponsored:null,
     reviewSubscription:null,
     category:{
@@ -69,13 +68,13 @@ export default {
     }
   }),
   created: function() {
-    this.areaSelected = this.$store.getters.areaSelected;
+    this.areaSelected = this.$store.getters["shared/areaSelected"];
     this.nextQuery = db
       .collection("reviews")
       .where(
         "geoHash." + this.areaSelected,
         "==",
-        this.$store.getters.location[this.areaSelected]
+        this.$store.getters["location/locations"][this.areaSelected]
       )
       .orderBy("timestamp", "desc")
       .limit(this.LIMIT);
@@ -87,6 +86,7 @@ export default {
         .then(querySnapshot => {
           const temp = [];
           querySnapshot.forEach(doc => {
+            console.log(doc.data())
             temp.push(doc.data());
           });
           this.reviews = this.reviews.concat(temp);
@@ -104,7 +104,7 @@ export default {
             .where(
               "geoHash." + this.areaSelected,
               "==",
-              this.$store.getters.location[this.areaSelected]
+              this.$store.getters["location/locations"][this.areaSelected]
             )
             .orderBy("timestamp", "desc")
             .startAfter(lastVisible)
@@ -120,7 +120,7 @@ export default {
         .where(
           "geoHash." + this.areaSelected,
           "==",
-          this.$store.getters.location[this.areaSelected]
+          this.$store.getters["location/locations"][this.areaSelected]
         )
         .orderBy("timestamp", "desc")
         .limit(this.LIMIT)
@@ -138,19 +138,9 @@ export default {
             }
           });
         });
-    },
-    onScroll (e) {
-      this.offsetTop = window.pageYOffset || document.documentElement.scrollTop;
-      if (this.offsetTop >= this.sticky) {
-        this.sponsored.classList.add("sticky")
-      } else {
-        this.sponsored.classList.remove("sticky");
-      }
     }
   },
   mounted() {
-    this.sponsored = document.getElementById("sponsored");
-    this.sticky = this.sponsored.offsetTop;
   },
   computed: {
     currentUser() {
@@ -172,13 +162,6 @@ export default {
 </script>
 
 <style scoped>
-  .sticky {
-    //position: fixed;
-    justify-content: end;
-    right: 0;
-    top: 0;
-  }
-
   .tilled div {
     font-family: "Gudea", sans-serif;
   }

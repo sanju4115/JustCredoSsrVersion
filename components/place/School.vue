@@ -23,7 +23,7 @@
       <span v-if="distance">{{distance}}</span>
       <div class="truncate mt-1">
         <span class="body-2">{{school.name}}</span><br>
-        <span class="colorSecondaryText--text" style="color: black">{{school.location.formatted_address}}</span>
+        <span class="colorSecondaryText--text" style="color: black">{{school.formattedAddress}}</span>
       </div>
     </v-card-title>
     <v-card-actions>
@@ -48,19 +48,16 @@ export default {
   },
   created() {
     const currentLocation = this.$store.getters["location/location"];
-    const schoolLocation = this.school.location;
     if (
       currentLocation !== null &&
-      currentLocation !== undefined &&
-      schoolLocation !== null &&
-      schoolLocation !== undefined
+      currentLocation !== undefined
     ) {
       this.distance = LocationUtil.convertKmToUserReadableDist(
         LocationUtil.distanceBtwnTwoLatLng(
           currentLocation.latitude,
           currentLocation.longitude,
-          schoolLocation.latitude,
-          schoolLocation.longitude,
+          this.school.latitude,
+          this.school.longitude,
           "K"
         )
       );

@@ -51,7 +51,7 @@ module.exports = {
     "@/plugins/vuetify",
     "@/plugins/fireauth",
     "@/plugins/location",
-    { src: "@/plugins/localStorage.js", ssr: false }
+    //{ src: "@/plugins/localStorage.js", ssr: false }
   ],
 
   /*
@@ -67,6 +67,10 @@ module.exports = {
   */
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
+  },
+
+  router: {
+    middleware: 'router-auth'
   },
 
   /*

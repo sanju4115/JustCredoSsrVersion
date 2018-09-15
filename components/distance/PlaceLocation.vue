@@ -67,7 +67,7 @@ export default {
           .then(
             response => {
               this.$emit("locationSaved");
-              this.$router.push("/");
+              this.$router.push("/loader");
             },
             error => {
               console.error(error);
@@ -90,7 +90,7 @@ export default {
       this.$store.dispatch("location/fetchUserLocation").then(
         response => {
           this.$emit("locationSaved");
-          this.$router.push("/");
+          this.$router.push("/loader");
         },
         error => {
           console.error(error);

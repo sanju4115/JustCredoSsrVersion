@@ -25,11 +25,11 @@
       <v-flex xs12 sm6 class="py-2" v-else>
         <p>Likes &amp; Comments</p>
         <v-chip label color="colorPrimaryText" :text-color="textColorLike" @click="likeOrUnlike">
-          <span class="mr-2">{{likesNum}} </span>
+          <span class="mr-2">{{review.noOfLikes}} </span>
           <v-icon :color="likeIconColor" center small style="cursor : pointer">thumb_up</v-icon>
         </v-chip>
         <v-chip label color="colorPrimaryText" :text-color="textColorComment">
-          <span class="mr-2">{{commentsNum}}</span>
+          <span class="mr-2">{{review.noOfComments}}</span>
           <v-icon :color="commentIconColor" center small style="cursor : pointer">comment</v-icon>
         </v-chip>
       </v-flex>
@@ -173,7 +173,7 @@ export default {
   },
   computed: {
     timeOfReview() {
-      return TImeUtil.timeDifference(this.review.timestamp, this.review.time);
+      return TImeUtil.timeDifference(this.review.createdAt, this.review.time);
     }
   },
   /**

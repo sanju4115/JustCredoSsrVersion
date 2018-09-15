@@ -31,7 +31,7 @@
     "vue-sticky": "^3.3.3",
     "vue2-animate": "^2.0.0",
     "vue2-google-maps": "^0.8.12",
-    "vuetify": "^1.2.1",
+    "vuetify": "^1.2.3",
     "vuetify-google-autocomplete": "^2.0.0-Alpha.8",
     "vuex": "^3.0.1",
     "vuex-persist": "^1.4.3",

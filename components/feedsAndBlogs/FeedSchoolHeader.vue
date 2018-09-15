@@ -8,15 +8,15 @@
     <v-layout row wrap v-else>
       <v-flex d-flex xs3 sm2 md2>
         <v-avatar size="50">
-          <img :src="schoolImage">
+          <img :src="place.coverPic !== null ? place.coverPic : images.NO_COVER ">
         </v-avatar>
       </v-flex>
       <v-flex d-flex xs6 sm9 md9>
         <v-layout row wrap>
           <v-flex d-flex>
             <div>
-              <h4 class="mb-0">{{school.name}}</h4>
-              <div style="font-size: 12px">{{Object.values(school.address).join()}}</div>
+              <h4 class="mb-0">{{place.name}}</h4>
+              <div style="font-size: 12px">{{place.formattedAddress}}</div>
             </div>
           </v-flex>
         </v-layout>
@@ -70,9 +70,10 @@
 
 <script>
 import db from "@/services/firebaseInit";
+import images from "@/constants/images"
 export default {
   name: "FeedSchoolHeader",
-  props: ["schoolID"],
+  props: ["place"],
   data: () => ({
     school: null,
     schoolImage: null,
@@ -99,46 +100,46 @@ export default {
      *
      */
     console.log("FeedSchoolHeader created hook");
-    db.collection("schools")
-      .doc(this.schoolID)
-      .get()
-      .then(doc => {
-        if (doc.exists) {
-          this.school = doc.data();
-          if (this.currentUser !==undefined && this.currentUser !== null && 
-                                      this.school.userID !== this.currentUser.uid) {
-            this.bookmarkSubscription = db
-              .collection("bookmark")
-              .where("userUid", "==", this.currentUser.uid)
-              .where("placeId", "==", this.schoolID)
-              .onSnapshot(querySnapshot => {
-                this.loadingBookmark = false;
-                if (querySnapshot.docs.length > 0) {
-                  this.bookmarkId = querySnapshot.docs[0].id;
-                  this.bookmarkColor = "green";
-                  this.isBookmarked = true;
-                } else {
-                  this.bookmarkColor = "grey";
-                  this.isBookmarked = false;
-                }
-              });
-          } else {
-            this.loadingBookmark = false;
-          }
-          this.loadingSchool = false;
-          let images = doc.data().images;
-          if (images !== undefined && images != null) {
-            this.schoolImage = Object.values(images)[0];
-          } else {
-            this.schoolImage = "/static/images/util/ic_nocover.png";
-          }
-        } else {
-          console.log("No such document!");
-        }
-      })
-      .catch(function(error) {
-        console.log("Error getting document:", error);
-      });
+    // db.collection("schools")
+    //   .doc(this.schoolID)
+    //   .get()
+    //   .then(doc => {
+    //     if (doc.exists) {
+    //       this.school = doc.data();
+    //       if (this.currentUser !==undefined && this.currentUser !== null && 
+    //                                   this.school.userID !== this.currentUser.uid) {
+    //         this.bookmarkSubscription = db
+    //           .collection("bookmark")
+    //           .where("userUid", "==", this.currentUser.uid)
+    //           .where("placeId", "==", this.schoolID)
+    //           .onSnapshot(querySnapshot => {
+    //             this.loadingBookmark = false;
+    //             if (querySnapshot.docs.length > 0) {
+    //               this.bookmarkId = querySnapshot.docs[0].id;
+    //               this.bookmarkColor = "green";
+    //               this.isBookmarked = true;
+    //             } else {
+    //               this.bookmarkColor = "grey";
+    //               this.isBookmarked = false;
+    //             }
+    //           });
+    //       } else {
+    //         this.loadingBookmark = false;
+    //       }
+    //       this.loadingSchool = false;
+    //       let images = doc.data().images;
+    //       if (images !== undefined && images != null) {
+    //         this.schoolImage = Object.values(images)[0];
+    //       } else {
+    //         this.schoolImage = "/static/images/util/ic_nocover.png";
+    //       }
+    //     } else {
+    //       console.log("No such document!");
+    //     }
+    //   })
+    //   .catch(function(error) {
+    //     console.log("Error getting document:", error);
+    //   });
   },
   methods: {
     /**
@@ -151,88 +152,88 @@ export default {
      * in the the bookmark collection
      *
      */
-    bookmarkOrUnBookmark: function() {
-      if(this.currentUser !== undefined && this.this.currentUser !== null){
-        if (!this.isBookmarked) {
-          this.bookmarkColor = false;
-          if (this.school.bookmarks == null) {
-            this.school["bookmarks"] = {
-              [this.currentUser.uid]: this.currentUser.uid
-            };
-          } else {
-            this.school.bookmarks[this.currentUser.uid] = this.currentUser.uid;
-          }
+    // bookmarkOrUnBookmark: function() {
+    //   if(this.currentUser !== undefined && this.this.currentUser !== null){
+    //     if (!this.isBookmarked) {
+    //       this.bookmarkColor = false;
+    //       if (this.school.bookmarks == null) {
+    //         this.school["bookmarks"] = {
+    //           [this.currentUser.uid]: this.currentUser.uid
+    //         };
+    //       } else {
+    //         this.school.bookmarks[this.currentUser.uid] = this.currentUser.uid;
+    //       }
 
-          console.log(this.schoolID);
-          const batch = db.batch();
-          const bookmarkRef = db.collection("bookmark").doc(); // updating in bookmark db
-          batch.set(bookmarkRef, {
-            userUid: this.currentUser.uid,
-            placeId: this.schoolID
-          });
-          const schoolRef = db.collection("schools").doc(this.schoolID);
-          batch.update(schoolRef, { bookmarks: this.school.bookmarks }); // updating bookmarks in school db
+    //       console.log(this.schoolID);
+    //       const batch = db.batch();
+    //       const bookmarkRef = db.collection("bookmark").doc(); // updating in bookmark db
+    //       batch.set(bookmarkRef, {
+    //         userUid: this.currentUser.uid,
+    //         placeId: this.schoolID
+    //       });
+    //       const schoolRef = db.collection("schools").doc(this.schoolID);
+    //       batch.update(schoolRef, { bookmarks: this.school.bookmarks }); // updating bookmarks in school db
 
-          if (
-            this.school.noOfBookmarks !== null || // updating no of bookmarks in school db
-            this.school.noOfBookmarks !== undefined
-          ) {
-            const x = this.school.noOfBookmarks;
-            batch.update(schoolRef, { noOfBookmarks: x + 1 });
-            this.school.noOfBookmarks = x + 1;
-          } else {
-            batch.update(schoolRef, { noOfBookmarks: 1 });
-            this.school.noOfBookmarks = 1;
-          }
-          batch
-            .commit()
-            .then(() => {
-              this.bookmarkColor = "green";
-              this.isBookmarked = true;
-            })
-            .catch(function(error) {
-              console.log(error);
-            });
-        } else {
-          this.unBookmarkDialogue = true;
-        }
-      }else {
-        //show popup to login
-      }
-    },
+    //       if (
+    //         this.school.noOfBookmarks !== null || // updating no of bookmarks in school db
+    //         this.school.noOfBookmarks !== undefined
+    //       ) {
+    //         const x = this.school.noOfBookmarks;
+    //         batch.update(schoolRef, { noOfBookmarks: x + 1 });
+    //         this.school.noOfBookmarks = x + 1;
+    //       } else {
+    //         batch.update(schoolRef, { noOfBookmarks: 1 });
+    //         this.school.noOfBookmarks = 1;
+    //       }
+    //       batch
+    //         .commit()
+    //         .then(() => {
+    //           this.bookmarkColor = "green";
+    //           this.isBookmarked = true;
+    //         })
+    //         .catch(function(error) {
+    //           console.log(error);
+    //         });
+    //     } else {
+    //       this.unBookmarkDialogue = true;
+    //     }
+    //   }else {
+    //     //show popup to login
+    //   }
+    // },
 
-    /**
-     * Called when user remove bookmark
-     *
-     * Deletes that doc from the bookmark collection
-     * and makes corresponding changes in the school db as well
-     */
-    unBookmarking: function() {
-      this.unBookmarkProcessing = true;
-      const batch = db.batch();
-      const bookmarkRef = db.collection("bookmark").doc(this.bookmarkId);
-      batch.delete(bookmarkRef);
-      const schoolRef = db.collection("schools").doc(this.schoolID);
-      delete this.school.bookmarks[this.currentUser.uid];
-      batch.update(schoolRef, { ["bookmarks"]: this.school.bookmarks });
-      if (
-        this.school.noOfBookmarks !== null ||
-        this.school.noOfBookmarks !== undefined
-      ) {
-        const x = this.school.noOfBookmarks;
-        batch.update(schoolRef, { noOfBookmarks: x - 1 });
-        this.school.noOfBookmarks = x - 1;
-      } else {
-        batch.update(schoolRef, { noOfBookmarks: 0 });
-        this.school.noOfBookmarks = 0;
-      }
-      batch.commit().then(() => {
-        this.unBookmarkProcessing = false;
-        this.unBookmarkDialogue = false;
-        this.bookmarkColor = "grey";
-        this.isBookmarked = false;
-      });
-    },
+    // /**
+    //  * Called when user remove bookmark
+    //  *
+    //  * Deletes that doc from the bookmark collection
+    //  * and makes corresponding changes in the school db as well
+    //  */
+    // unBookmarking: function() {
+    //   this.unBookmarkProcessing = true;
+    //   const batch = db.batch();
+    //   const bookmarkRef = db.collection("bookmark").doc(this.bookmarkId);
+    //   batch.delete(bookmarkRef);
+    //   const schoolRef = db.collection("schools").doc(this.schoolID);
+    //   delete this.school.bookmarks[this.currentUser.uid];
+    //   batch.update(schoolRef, { ["bookmarks"]: this.school.bookmarks });
+    //   if (
+    //     this.school.noOfBookmarks !== null ||
+    //     this.school.noOfBookmarks !== undefined
+    //   ) {
+    //     const x = this.school.noOfBookmarks;
+    //     batch.update(schoolRef, { noOfBookmarks: x - 1 });
+    //     this.school.noOfBookmarks = x - 1;
+    //   } else {
+    //     batch.update(schoolRef, { noOfBookmarks: 0 });
+    //     this.school.noOfBookmarks = 0;
+    //   }
+    //   batch.commit().then(() => {
+    //     this.unBookmarkProcessing = false;
+    //     this.unBookmarkDialogue = false;
+    //     this.bookmarkColor = "grey";
+    //     this.isBookmarked = false;
+    //   });
+    //},
 
     /**
      * Called before destroying this component
@@ -240,9 +241,9 @@ export default {
      * un-subscribing from database listeners
      */
     beforeDestroy() {
-      if (this.bookmarkSubscription !== null) {
-        this.bookmarkSubscription();
-      }
+      // if (this.bookmarkSubscription !== null) {
+      //   this.bookmarkSubscription();
+      // }
     }
   }
 };

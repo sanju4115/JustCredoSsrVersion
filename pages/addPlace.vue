@@ -65,7 +65,6 @@
         </div>
       </v-flex>
     </v-layout>
-    <v-btn color="primary" @click.stop="location">Submit</v-btn>
     <v-container>
       <SchoolForm v-if="selectedType==='School'"></SchoolForm>
       <MusicClassForm v-else-if="selectedType==='Music School'"></MusicClassForm>
@@ -117,59 +116,6 @@
         }else {
           this.$SmoothScroll(document.getElementById('addForm'));
         }
-      },
-      location(){
-        // this.$snotify.simple('Example body content', 'Example title!', {
-        //   timeout: 2000,
-        //   showProgressBar: false,
-        //   closeOnClick: true,
-        //   icon: 'assets/custom-svg.svg'
-        // });
-
-
-        let batch = db.batch();
-        db.collection("schools").get().then(function(querySnapshot) {
-          querySnapshot.forEach(function(doc) {
-            const schoolDetailRef = db.collection("school_details").doc(doc.id);
-            batch.set(schoolDetailRef,{
-              id:doc.id,
-              timestamp: new Date(),
-              noOfBookmarks:doc.data().noOfBookmarks,
-              noOfRating:doc.data().noOfRating,
-              rating:doc.data().rating,
-              noOfBlogs:0,
-            });
-            console.log(doc.id, " => ", doc.data());
-          });
-
-          batch.commit().then(function () {
-            console.log("all schools published");
-          });
-        });
-
-
-        /*db.collection("schools").doc("-L78UkWyK3E_RcWA20sK")
-          .get().then(doc => {
-          if (doc.exists) {
-            console.log("Document data:", doc.data());
-            LocationUtil.fromLatLongToAddress(doc.data().latitude,doc.data().longitude).then(response => {
-              doc.ref.update({"location": response.data})
-                .then(function() {
-                  console.log("Document successfully updated!");
-                })
-                .catch(function(error) {
-                  console.error("Error updating document: ", error);
-                });
-            }, error => {
-              console.error(error)
-            });
-
-          } else {
-            console.log("No such document!");
-          }
-        }).catch(function(error) {
-          console.log("Error getting document:", error);
-        });*/
       }
     }
   };

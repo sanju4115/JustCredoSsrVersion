@@ -10,6 +10,23 @@
         <nuxt ref="page"/>
       </v-container>
       <!--<vue-snotify></vue-snotify>-->
+      <!--Start of Location Dialogue Box-->
+    <v-dialog persistent v-model="locationView" width="500px">
+      <v-card class="grey darken-4 elevation-0">
+        <PlaceLocation
+          @closeLocationPopup="locationView = !locationView">
+        </PlaceLocation>
+        <v-card-actions class="align-content-end justify-end">
+          <v-btn flat
+                 v-if="!loading && location"
+                 dark
+                 @click.stop="locationView = !locationView">
+            Close
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+    <!--End of Location Dialogue Box-->
     </v-content>
     <Footer></Footer>
   </v-app>
@@ -19,18 +36,36 @@
 import NavigationDrawer from "../components/navigationDrawer/NavigationDrawer";
 import Toolbar from "../components/toolbar/Toolbar";
 import Footer from "../components/footer/Footer";
+import PlaceLocation from "@/components/distance/PlaceLocation";
+
 export default {
-  components: { Footer, Toolbar, NavigationDrawer },
+  components: { Footer, Toolbar, NavigationDrawer,PlaceLocation },
   data() {
     return {
       dialog: false,
-      drawer: false
+      drawer: false,
+      locationView: false,
     };
   },
   mounted(){
     this.drawer = true
+    // if (!this.location) {
+    //   this.locationView = true;
+    // } else {
+    //   if (!localStorage.getItem("firstTime")) {
+    //     this.locationView = true;
+    //     localStorage.setItem("firstTime", "true");
+    //   }
+    // }
   },
-  computed: {},
+  computed: {
+    location() {
+      return this.$store.getters["location/location"];
+    },
+    loading() {
+      return this.$store.getters["location/loading"];
+    }
+  },
   head() {
     return {
       script: [

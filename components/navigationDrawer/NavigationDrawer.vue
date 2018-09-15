@@ -71,109 +71,88 @@ export default {
         this.$store.getters["login/user"] !== null &&
         this.$store.getters["login/user"] !== undefined
       );
-    }
-  },
-  data: () => ({
-    drawer: true,
-    items: [
-      {
-        icon: "account_box",
-        text: "Login",
-        link: "/login"
-      },
-      {
+    },
+    items(){
+      let items = [
+        {
         icon: "home",
         text: "Home",
         link: "/"
-      },
-      {
-        icon: "pages",
-        text: "Feeds",
-        link: "/feeds"
-      },
-      {
-        icon: "burst_mode",
-        text: "Blogs",
-        link: "/blogs"
-      },
-      {
-        icon: "person",
-        text: "Profile",
-        link: "/profile"
-      },
-      {
-        icon: "border_color",
-        text: "Edit Profile",
-        link: "/editProfile"
-      },
-      {
-        icon: "dashboard",
-        text: "Admin",
-        link: "/adminDashboard"
-      },
-      {
-        icon: "add_box",
-        text: "Add Place",
-        link: "/addPlace"
-      },
-      // {
-      //   icon: "keyboard_arrow_up",
-      //   "icon-alt": "keyboard_arrow_down",
-      //   text: "Add Place",
-      //   model: false,
-      //   children: [
-      //     {
-      //       text: "School",
-      //       link: "/addPlace"
-      //     },
-      //     {
-      //       text: "Coaching",
-      //       link: "/addPlace"
-      //     },
-      //     {
-      //       text: "Music School",
-      //       link: "/addPlace"
-      //     },
-      //     {
-      //       text: "Sports School",
-      //       link: "/addPlace"
-      //     },
-      //     {
-      //       text: "Art School",
-      //       link: "/addPlace"
-      //     },
-      //     {
-      //       text: "Private/Home Tutors",
-      //       link: "/addPlace"
-      //     }
-      //   ]
-      // },
-      {
+        },
+        {
+          icon: "pages",
+          text: "Feeds",
+          link: "/feeds"
+        },
+        {
+          icon: "burst_mode",
+          text: "Blogs",
+          link: "/blogs"
+        },
+        {
+          icon: "person",
+          text: "Profile",
+          link: "/profile"
+        },
+        {
+          icon: "border_color",
+          text: "Edit Profile",
+          link: "/editProfile"
+        },
+        {
         icon: "settings",
         text: "Services",
         link: "/services"
-      },
-      {
-        icon: "help",
-        text: "About",
-        link: "/about"
-      },
-      {
-        icon: "phonelink",
-        text: "Partners",
-        link: "/partners"
-      },
-      {
-        icon: "group_work",
-        text: "Mission",
-        link: "/mission"
-      },
-      {
-        icon: "chat_bubble",
-        text: "Send feedback",
-        link: "/profile"
+        },
+        {
+          icon: "help",
+          text: "About",
+          link: "/about"
+        },
+        {
+          icon: "phonelink",
+          text: "Partners",
+          link: "/partners"
+        },
+        {
+          icon: "group_work",
+          text: "Mission",
+          link: "/mission"
+        },
+        {
+          icon: "chat_bubble",
+          text: "Send feedback",
+          link: "/profile"
+        }
+      ];
+      if(!this.userIsAuthenticated){
+        items.unshift({
+          icon: "account_box",
+          text: "Login",
+          link: "/login"
+        });
+      }else{
+        const user = this.$store.getters["login/user"];
+        items.push({
+              icon: "add_box",
+              text: "Add Place",
+              link: "/addPlace"
+            });
+        user.authorities.forEach(element => {
+          if(element.authority=== "ROLE_ADMIN"){
+            items.push({
+              icon: "dashboard",
+              text: "Admin",
+              link: "/adminDashboard"
+            });
+          }
+        });
       }
-    ]
+      return items;
+    }
+  },
+  data: () => ({
+    drawer: true
   })
 };
 </script>

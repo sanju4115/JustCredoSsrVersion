@@ -6,11 +6,11 @@
         <v-layout row wrap v-if="reviews" v-for="review in reviews" mb-3>
           <v-card style="width: 100%">
             <v-flex>
-              <FeedSchoolHeader :schoolID="review.schoolID"></FeedSchoolHeader>
+              <!-- <FeedSchoolHeader :school="review.place"></FeedSchoolHeader> -->
               <v-divider></v-divider>
             </v-flex>
             <v-flex>
-              <app-user-header-link :uid="review.userID"></app-user-header-link>
+              <!-- <app-user-header-link :uid="review.userID"></app-user-header-link> -->
               <v-divider></v-divider>
             </v-flex>
             <v-flex>
@@ -52,6 +52,10 @@ import db from "@/services/firebaseInit";
 import FeedSchoolHeader from "@/components/feedsAndBlogs/FeedSchoolHeader";
 import ReviewBody from "@/components/feedsAndBlogs/ReviewBody";
 import Sponsored from "@/components/place/Sponsored";
+import config from "@/config.js";
+import axios from "axios";
+import ApiEndpoints from "@/constants/ApiEndpoints";
+
 export default {
   name: "Feed",
   components: {
@@ -61,34 +65,7 @@ export default {
     AppUserHeaderLink,
     InfiniteLoading
   },
-  asyncData ({store}) { // return latest reviews on whole
-    const LIMIT = 10;
-    if(process.server){ 
-      return db.collection("reviews")
-                .orderBy("timestamp", "desc")
-                .limit(LIMIT)
-                .get()
-                .then(querySnapshot => {
-                  const temp = [];
-                  querySnapshot.forEach(doc => {
-                    temp.push(doc.data());
-                  });
-                  return {
-                    reviews : temp
-                  }
-                })
-                .catch(function(error) {
-                  console.log("Error getting documents: ", error);
-                  return {   // if error return empty list
-                    reviews : temp
-                  }
-                });
-    }else{
-      return {   // on client return empty list
-            reviews : []
-      }
-    }
-  },
+  middleware: "feed",
   head () {
     return {
       title: "Educational Places Rating/Reviews Feeds",
@@ -106,6 +83,27 @@ export default {
       ]
     }
   },
+  async asyncData ( { store	} ) {
+    let currentUser = store.getters["login/user"];
+    let currentUserId = "";
+    if(currentUser !== undefined && currentUser !== null){
+      currentUserId = currentUser.uid;
+    }
+    const areaRangeSelected = store.getters["shared/areaSelected"];
+    let location = store.getters["location/location"];
+    let params= {
+                    currentUserId: currentUserId,
+                    geoHash: areaRangeSelected,
+                    geoHashValue: (location !== null && location !== undefined ) ? location[areaRangeSelected] : "",
+                    page: 0,
+                    size:20
+                };
+    let { data } = await axios.get(
+      config.baseUrl + ApiEndpoints.FEED_LOCATION_WISE, {params: params}
+    );
+    console.log(data);
+    return { reviews: data }
+  },
   data: () => ({
     nextQuery: null,
     LIMIT: 10,
@@ -117,64 +115,46 @@ export default {
     category:{
       key:"primarySchool",
       name:"Popular And Sponsored"
-    }
+    },
+    location:null
   }),
   created: function() {
     
   },
   methods: {
-    builQueryForFisrtTime(){
-    this.areaSelected = this.$store.getters["shared/areaSelected"];
-    this.nextQuery = db
-      .collection("reviews")
-      .where(
-        "geoHash." + this.areaSelected,
-        "==",
-        this.$store.getters["location/location"][this.areaSelected]
-      )
-      .orderBy("timestamp", "desc")
-      .limit(this.LIMIT);
-    },
     infiniteHandler($state) {
-      if (this.firstTime) {
-        this.builQueryForFisrtTime();
-      }
-      this.nextQuery
-        .get()
-        .then(querySnapshot => {
-          const temp = [];
-          querySnapshot.forEach(doc => {
-            const reviewExist = this.reviews.find(review => {
-                return review.id === doc.data().id;
-              });
-              if (!reviewExist) {
-                temp.push(doc.data());
-              }
-          });
-          this.reviews = this.reviews.concat(temp);
-          $state.loaded();
-          if (!this.firstTime && temp.length < this.LIMIT) {
-            $state.complete();
-          }
-          if (this.firstTime) {
-            this.buildEvenListener();
-            this.firstTime = false;
-          }
-          const lastVisible = querySnapshot.docs[querySnapshot.docs.length - 1];
-          this.nextQuery = db
-            .collection("reviews")
-            .where(
-              "geoHash." + this.areaSelected,
-              "==",
-              this.$store.getters["location/location"][this.areaSelected]
-            )
-            .orderBy("timestamp", "desc")
-            .startAfter(lastVisible)
-            .limit(this.LIMIT);
-        })
-        .catch(function(error) {
-          console.log("Error getting documents: ", error);
-        });
+      // this.nextQuery
+      //   .get()
+      //   .then(querySnapshot => {
+      //     const temp = [];
+      //     querySnapshot.forEach(doc => {
+      //       console.log(doc.data())
+      //       temp.push(doc.data());
+      //     });
+      //     this.reviews = this.reviews.concat(temp);
+      //     $state.loaded();
+      //     if (this.firstTime) {
+      //       this.buildEvenListener();
+      //       this.firstTime = false;
+      //     }
+      //     if (temp.length < this.LIMIT) {
+      //       $state.complete();
+      //     }
+      //     const lastVisible = querySnapshot.docs[querySnapshot.docs.length - 1];
+      //     this.nextQuery = db
+      //       .collection("reviews")
+      //       .where(
+      //         "geoHash." + this.areaSelected,
+      //         "==",
+      //         this.location[this.areaSelected]
+      //       )
+      //       .orderBy("timestamp", "desc")
+      //       .startAfter(lastVisible)
+      //       .limit(this.LIMIT);
+      //   })
+      //   .catch(function(error) {
+      //     console.log("Error getting documents: ", error);
+      //   });
     },
     buildEvenListener() {
       this.reviewSubscription = db
@@ -182,7 +162,7 @@ export default {
         .where(
           "geoHash." + this.areaSelected,
           "==",
-          this.$store.getters["location/location"][this.areaSelected]
+          this.location[this.areaSelected]
         )
         .orderBy("timestamp", "desc")
         .limit(this.LIMIT)
@@ -200,19 +180,9 @@ export default {
             }
           });
         });
-    },
-    onScroll (e) {
-      this.offsetTop = window.pageYOffset || document.documentElement.scrollTop;
-      if (this.offsetTop >= this.sticky) {
-        this.sponsored.classList.add("sticky")
-      } else {
-        this.sponsored.classList.remove("sticky");
-      }
     }
   },
   mounted() {
-    this.sponsored = document.getElementById("sponsored");
-    this.sticky = this.sponsored.offsetTop;
   },
   computed: {
     currentUser() {

@@ -93,7 +93,7 @@ export default {
     onLogout() {
       db
         .collection("notification_tokens")
-        .doc(this.user.uid)
+        .doc(this.user.firebaseUid)
         .delete()
         .then(() => {
           console.log("main.js deleted notification token");

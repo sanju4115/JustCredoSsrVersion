@@ -51,8 +51,7 @@
 </template>
 
 <script>
-
-  import firebase from "firebase";
+import firebase from "firebase";
 
 export default {
   name: "Login",
@@ -63,7 +62,7 @@ export default {
   mounted() {
     const firebaseui = require('firebaseui');
     const uiConfig = {
-      signInSuccessUrl: "/home",
+      signInSuccessUrl: "/",
       credentialHelper: firebaseui.auth.CredentialHelper.ACCOUNT_CHOOSER_COM,
       signInFlow: "popup",
       signInOptions: [firebase.auth.GoogleAuthProvider.PROVIDER_ID]
@@ -87,6 +86,8 @@ export default {
       this.$store.dispatch("login/signUserIn", {
         email: this.loginEmail,
         password: this.loginPassword
+      }).then( () => {
+        this.$router.push("/")
       });
     }
   },

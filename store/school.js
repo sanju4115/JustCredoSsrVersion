@@ -3,11 +3,7 @@ import db from "../services/firebaseInit";
 export default {
   state: () => ({
     loadedSchools: [],
-    primarySchool: [],
-    secondarySchool: [],
-    preSchool: [],
-    specialSchool: [],
-    internationalSchool: [],
+    school: [],
     musicClass: [],
     artClass: [],
     sportsClass: [],
@@ -34,20 +30,8 @@ export default {
         }
       });
     },
-    primarySchool(state, payload) {
-      state.primarySchool = payload;
-    },
-    secondarySchool(state, payload) {
-      state.secondarySchool = payload;
-    },
-    preSchool(state, payload) {
-      state.preSchool = payload;
-    },
-    specialSchool(state, payload) {
-      state.specialSchool = payload;
-    },
-    internationalSchool(state, payload) {
-      state.internationalSchool = payload;
+    school(state, payload) {
+      state.school = payload;
     },
     musicClass(state, payload) {
       state.musicClass = payload;
@@ -96,20 +80,8 @@ export default {
           });
       });
     },
-    primarySchool({commit}, payload) {
-      commit("primarySchool", payload);
-    },
-    secondarySchool({commit}, payload) {
-      commit("secondarySchool", payload);
-    },
-    preSchool({commit}, payload) {
-      commit("preSchool", payload);
-    },
-    specialSchool({commit}, payload) {
-      commit("specialSchool", payload);
-    },
-    internationalSchool({commit}, payload) {
-      commit("internationalSchool", payload);
+    school({commit}, payload) {
+      commit("school", payload);
     },
     musicClass({commit}, payload) {
       commit("musicClass", payload);
@@ -128,27 +100,15 @@ export default {
     }
   },
   getters: {
-    school(state) {
+    schools(state) {
       return schoolId => {
         return state.loadedSchools.find(school => {
           return school.id === schoolId;
         });
       };
     },
-    primarySchool(state) {
-      return state.primarySchool;
-    },
-    secondarySchool(state) {
-      return state.secondarySchool;
-    },
-    preSchool(state) {
-     return state.preSchool;
-    },
-    specialSchool(state) {
-      return state.specialSchool;
-    },
-    internationalSchool(state) {
-      return state.internationalSchool;
+    school(state) {
+      return state.school;
     },
     musicClass(state) {
       return state.musicClass;
