@@ -1,9 +1,9 @@
 <template>
     <LocationView 
         :localities=localities 
-        baseRoute="/directory/"
+        :baseRoute="`/directory/${params.country}/`"
         :showCategory=false
-        :breadcrumbs=[]></LocationView>
+        :breadcrumbs=breadcrumbs></LocationView>
 </template>
 
 <script>
@@ -14,12 +14,18 @@ import LocationView from "@/components/place/LocationView";
 export default {
   name: "home",
   components: { LocationView },
-  async asyncData ( ) {
+  async asyncData ( {params} ) {
     let { data } = await axios.get(
-      config.baseUrl + ApiEndpoints.GET_ALL_CUNTRIES
+      config.baseUrl + ApiEndpoints.GET_LOCALITIES_BY_COUNTRY_ID,{
+        params: {
+          countryId: params.country,
+        }
+      }
     );
     return { 
-        localities: data,
+        localities: data.data,
+        breadcrumbs: data.breadcrumbs,
+        params : params
      }
   },
   data: () => ({
@@ -31,9 +37,6 @@ export default {
   methods: {
   },
   mounted() {
-    axios.get(`https://api.ipgeolocation.io/getip`).then(res => {
-      cosole.log(res);
-    });
     
   }
 };

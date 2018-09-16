@@ -41,6 +41,7 @@ export default {
   },
   mounted() {
     const location = this.$store.getters["location/location"];
+    console.log(location);
     if (location === null || location === undefined) {
       axios.get(`http://ip-api.com/json`).then(res => {
         this.$store.dispatch("location/setIpLocation", res.data);

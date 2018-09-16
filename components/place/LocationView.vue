@@ -110,7 +110,7 @@ export default {
     },
     breadcrumbs:{
         type:Array,
-        required:true
+        required:true,
     } 
   },
   components: { LocationName, FooterMessage },

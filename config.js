@@ -1,6 +1,6 @@
 const config = {
     development: {
-        baseUrl: 'https://whispering-badlands-15150.herokuapp.com'
+        baseUrl: 'http://localhost:5000'
     },
     production: {
         baseUrl: 'https://whispering-badlands-15150.herokuapp.com'

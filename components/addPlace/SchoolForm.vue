@@ -135,6 +135,9 @@ import AddressWithFetch from "@/components/utils/formUtil/AddressWithFetch";
 import BoardsAndClasses from "@/components/utils/formUtil/BoardsAndClasses";
 import FacilitiesLike from "@/components/utils/formUtil/FacilitiesLike";
 import EntityConstants from "../../utils/EntityConstants";
+import config from "@/config.js";
+import axios from "axios";
+import ApiEndpoints from "@/constants/ApiEndpoints";
 
 export default {
   name: "SchoolForm",
@@ -146,6 +149,21 @@ export default {
     CategoriesAndGender,
     Address,
     VuetifyGoogleAutocomplete
+  },
+  async asyncData ( ) {
+    /**
+     * Queries on thd db to fetch school form data
+     */
+    let { data } = await axios.get(
+    config.baseUrl + ApiEndpoints.GET_FORM_DATA_FOR_SCHOOL,{
+        params: {
+        categoryId: 6,
+        }
+    }
+    );
+    return { 
+        formData: data,
+      }
   },
   data() {
     return {
@@ -179,21 +197,21 @@ export default {
     /**
      * Queries on thd db to fetch school form data
      */
-    db.collection("filter")
-      .doc("schoolFilters")
-      .get()
-      .then(doc => {
-        if (doc.exists) {
-          this.formData = doc.data();
-          console.log(this.formData);
-        } else {
-          this.$router.push(`/error?error=${"No such document!"}`);
-        }
-        this.loading = false;
-      })
-      .catch(error => {
-        this.$router.push(`/error?error=${error}`);
-      });
+    // db.collection("filter")
+    //   .doc("schoolFilters")
+    //   .get()
+    //   .then(doc => {
+    //     if (doc.exists) {
+    //       this.formData = doc.data();
+    //       console.log(this.formData);
+    //     } else {
+    //       this.$router.push(`/error?error=${"No such document!"}`);
+    //     }
+    //     this.loading = false;
+    //   })
+    //   .catch(error => {
+    //     this.$router.push(`/error?error=${error}`);
+    //   });
   },
   methods: {
     saveSchool: function(snapshot, newSchoolRef, placeType) {

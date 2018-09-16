@@ -1,7 +1,7 @@
 <template>
   <LocationView 
     :localities=subLocalities 
-    :baseRoute="`/1/${city}/`"
+    :baseRoute="`/directory/${params.country}/${params.city}/`"
     :showCategory=true
     :breadcrumbs=breadcrumbs></LocationView>
 </template>
@@ -25,7 +25,7 @@ export default {
     return { 
       subLocalities: data.data,
       breadcrumbs: data.breadcrumbs,
-      city: params.city
+      params: params
     }
   },
   data: () => ({
