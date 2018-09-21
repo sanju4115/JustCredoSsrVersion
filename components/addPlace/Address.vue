@@ -1,22 +1,23 @@
 <template>
+  <v-container>
     <v-layout row wrap v-if="location">
       <v-flex xs12>
         <v-text-field
           label="Formatted Address"
           light
-          v-model="location.formatted_address"></v-text-field>
+          v-model="location.formattedAddress"></v-text-field>
       </v-flex>
       <v-flex xs6>
         <v-text-field
           label="Sub-Locality"
           disabled
-          v-model="location.sublocality_level_2"></v-text-field>
+          v-model="location.subLocalityLevel2"></v-text-field>
       </v-flex>
       <v-flex xs6>
         <v-text-field
           label="Locality"
           disabled
-          v-model="location.sublocality_level_1"></v-text-field>
+          v-model="location.subLocalityLevel1"></v-text-field>
       </v-flex>
       <v-flex xs6>
         <v-text-field
@@ -28,7 +29,7 @@
         <v-text-field
           label="State"
           disabled
-          v-model="location.administrative_area_level_1"></v-text-field>
+          v-model="location.administrativeAreaLevel1"></v-text-field>
       </v-flex>
 
       <v-flex xs6>
@@ -41,7 +42,7 @@
         <v-text-field
           label="Postal Code"
           disabled
-          v-model="location.postal_code"></v-text-field>
+          v-model="location.postalCode"></v-text-field>
       </v-flex>
       <v-flex xs6>
         <v-text-field
@@ -56,6 +57,7 @@
           v-model="location.latitude"></v-text-field>
       </v-flex>
     </v-layout>
+  </v-container>  
 </template>
 
 <script>

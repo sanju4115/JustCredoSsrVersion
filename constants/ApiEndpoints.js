@@ -8,5 +8,9 @@ export default {
     GET_USER_BY_FIREBASE_UID: '/api/open/user/getUserByFirebaseUid',
     SIGN_IN_BY_FIREBASE_UID: '/api/open/user/signInByFirebaseUid',
     GET_ALL_CUNTRIES: '/api/open/location/getCountries',
-    GET_FORM_DATA_FOR_SCHOOL: '/api/client/addPlace/getSchoolFormData'
+    GET_FORM_DATA_FOR_SCHOOL: '/api/client/addPlace/getSchoolFormData',
+    GET_REVERSE_GEOCODE:'/api/client/addPlace/reverseGeocode',
+    GET_AUTOCOMPLETE_RESULTS:'/api/client/addPlace/getAutocompleteResults',
+    GET_PLACE_DETAILS_PACE_ID:'/api/client/addPlace/getPlaceDetailsFromPlaceId',
+    POST_SCHOOL_DETAIL:'/api/client/addPlace/submitSchool'
 }

@@ -29,6 +29,20 @@
     <!--End of Location Dialogue Box-->
     </v-content>
     <Footer></Footer>
+    <v-snackbar
+      color="error"
+      bottom
+      v-model="errorSnackbar">
+      {{ errorText }}
+      <v-btn dark flat @click.native="closeErrorSnackbar()">Close</v-btn>
+    </v-snackbar>
+    <v-snackbar
+      color="success"
+      bottom
+      v-model="successSnackbar">
+      {{ successText }}
+      <v-btn dark flat @click.native="closeSuccessSnackbar()">Close</v-btn>
+    </v-snackbar>
   </v-app>
 </template>
 
@@ -44,7 +58,7 @@ export default {
     return {
       dialog: false,
       drawer: false,
-      locationView: false,
+      locationView: false
     };
   },
   mounted(){
@@ -58,12 +72,32 @@ export default {
     //   }
     // }
   },
+  methods:{
+    closeErrorSnackbar(){
+          this.$store.dispatch("shared/setErrorSnackbar",false);
+    },
+    closeSuccessSnackbar(){
+          this.$store.dispatch("shared/setErrorSnackbar",false);
+    }
+  },
   computed: {
     location() {
       return this.$store.getters["location/location"];
     },
     loading() {
       return this.$store.getters["location/loading"];
+    },
+    errorText(){
+      return this.$store.getters["shared/errorText"];
+    },
+    errorSnackbar(){
+      return this.$store.getters["shared/errorSnackbar"];
+    },
+    successText(){
+      return this.$store.getters["shared/successText"];
+    },
+    successSnackbar(){
+      return this.$store.getters["shared/successSnackbar"];
     }
   },
   head() {

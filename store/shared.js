@@ -6,7 +6,11 @@ export default {
     areaSelected: "geohash50",
     isUserAdmin: false,
     drawerState: false,
-    isServiceAvailable: true
+    isServiceAvailable: true,
+    errorText: null,
+    errorSnackbar: false,
+    successText: null,
+    successSnackbar:false
   }),
   mutations: {
     setLoading(state, payload) {
@@ -26,6 +30,18 @@ export default {
     },
     setServiceAvailable(state, payload) {
       state.isServiceAvailable = payload;
+    },
+    setErrorText(state, payload){
+      state.errorText = payload;
+    },
+    setErrorSnackbar(state, payload){
+      state.errorSnackbar = payload;
+    },
+    setSuccessText(state, payload){
+      state.successText = payload;
+    },
+    setSuccessSnackbar(state, payload){
+      state.successSnackbar = payload;
     }
   },
   actions: {
@@ -40,6 +56,18 @@ export default {
     },
     isServiceAvailable({ commit }, payload) {
       commit("setServiceAvailable", payload);
+    },
+    setErrorText({ commit }, payload){
+      commit("setErrorText", payload);
+    },
+    setErrorSnackbar({ commit }, payload){
+      commit("setErrorSnackbar", payload);
+    },
+    setSuccessText({ commit }, payload){
+      commit("setSuccessText", payload);
+    },
+    setSuccessSnackbar({ commit }, payload){
+      commit("setSuccessSnackbar", payload);
     }
   },
   getters: {
@@ -60,6 +88,18 @@ export default {
     },
     serviceAvailable(state) {
       return state.isServiceAvailable;
+    },
+    errorText(state) {
+      return state.errorText;
+    },
+    errorSnackbar(state){
+      return state.errorSnackbar;
+    },
+    successText(state) {
+      return state.successText;
+    },
+    successSnackbar(state){
+      return state.successSnackbar;
     }
   }
 };

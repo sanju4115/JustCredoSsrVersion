@@ -7,11 +7,12 @@
           <v-layout row wrap>
             <v-flex
               xs4
-              v-for="board in boards">
-              <v-checkbox :label="board.name"
+              v-for="(board,index) in boards"
+              :key="index">
+              <v-checkbox :label="board"
                           v-model="var_boardsList"
                           color="accent"
-                          hide-details :value="board.name"
+                          hide-details :value="board"
               ></v-checkbox>
             </v-flex>
           </v-layout>
@@ -23,11 +24,11 @@
           <v-layout row wrap>
             <v-flex
               xs4
-              v-for="schoolClass in classes">
-              <v-checkbox :label="schoolClass.name"
+              v-for="(schoolClass,index) in classes" :key="index">
+              <v-checkbox :label="schoolClass"
                           v-model="var_classesList"
                           color="accent"
-                          hide-details :value="schoolClass.name"
+                          hide-details :value="schoolClass"
               ></v-checkbox>
             </v-flex>
           </v-layout>

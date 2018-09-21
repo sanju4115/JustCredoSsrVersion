@@ -5,7 +5,6 @@ import "vuetify/dist/vuetify.min.css"
 import vueSmoothScroll from 'vue-smoothscroll'
 import ErrorAlert from "../components/alerts/ErrorAlert";
 import Snotify, { SnotifyPosition } from 'vue-snotify';
-import VuetifyGoogleAutocomplete from "vuetify-google-autocomplete";
 import Croppa from 'vue-croppa';
 
 //import * as VueGoogleMaps from "vue2-google-maps";
@@ -52,9 +51,6 @@ const options = {
 };
 
 Vue.use(Snotify, options);
-Vue.use(VuetifyGoogleAutocomplete, {
-  apiKey: 'AIzaSyCg9KqjmKWZOFws3MUGPdx4uPJgjlndwds',
-});
 Vue.use(Croppa);
 
 

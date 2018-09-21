@@ -194,7 +194,6 @@
 import db from "@/services/firebaseInit";
 import Geohash from "latlon-geohash";
 import LocationUtil from "../../utils/LocationUtil";
-import VuetifyGoogleAutocomplete from "vuetify-google-autocomplete";
 import Address from "./Address";
 import firebase from "firebase";
 import SchoolUtil from "../../utils/SchoolUtil";
@@ -216,7 +215,6 @@ export default {
     Description,
     CategoriesAndGender,
     Address,
-    VuetifyGoogleAutocomplete
   },
   data() {
     return {

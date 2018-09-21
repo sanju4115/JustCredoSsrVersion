@@ -119,7 +119,6 @@
 
 <script>
 import db from "@/services/firebaseInit";
-import VuetifyGoogleAutocomplete from "vuetify-google-autocomplete";
 import Address from "./Address";
 import firebase from "firebase";
 import SchoolFormValidation from "@/utils/SchoolFormValidation";
@@ -142,7 +141,6 @@ export default {
     Description,
     CategoriesAndGender,
     Address,
-    VuetifyGoogleAutocomplete
   },
   data() {
     return {

@@ -8,7 +8,7 @@
           label="Select special facilities or create a new ones"
           chips
           tags
-          :items="specialFacilities.map(value => value.name)"
+          :items="specialFacilities"
         ></v-select>
       </v-flex>
       <v-flex xs12>
@@ -17,7 +17,7 @@
           label="Select general facilities or create a new ones"
           chips
           tags
-          :items="facilities.map(value => value.name)"
+          :items="facilities"
         ></v-select>
       </v-flex>
       <v-flex xs12>
@@ -26,7 +26,7 @@
           label="Select extracurricular activities or create a new ones"
           chips
           tags
-          :items="extracurricular.map(value => value.name)"
+          :items="extracurricular"
         ></v-select>
       </v-flex>
     </v-layout>
