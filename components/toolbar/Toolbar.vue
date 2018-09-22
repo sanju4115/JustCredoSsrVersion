@@ -10,12 +10,12 @@
          @click.stop="onLogoClicked"
          src="/images/logos/logo_web.png"
          width="250px" class="text-xs-center"/>
-    <v-text-field v-if="userIsAuthenticated"
+    <!-- <v-text-field v-if="userIsAuthenticated"
                   flat
                   solo-inverted
                   prepend-icon="search"
                   label="Search"
-                  class="hidden-sm-and-down ml-5"></v-text-field>
+                  class="hidden-sm-and-down ml-5"></v-text-field> -->
     <v-spacer></v-spacer>
     <v-toolbar-items
       v-if="!userIsAuthenticated"

@@ -8,7 +8,7 @@ export default ({store, redirect}) => {
     firebase.auth().onAuthStateChanged(async user => {
       // Set service worker registered false as browser refresh
       store.dispatch("login/setServiceWorkerRegistered", false);
-      store.dispatch("school/clearSchools");
+      //store.dispatch("school/clearSchools");
       if (user) {
         try {
           var response = await axios.get(
@@ -25,8 +25,8 @@ export default ({store, redirect}) => {
         }
       } else {
        //User session ended so clear user and location
-        store.dispatch("location/clearLocation");
-        store.dispatch("login/clearUser");
+        // store.dispatch("location/clearLocation");
+        // store.dispatch("login/clearUser");
       }
       resolve()
     })

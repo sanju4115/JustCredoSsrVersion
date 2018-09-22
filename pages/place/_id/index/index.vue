@@ -1,6 +1,6 @@
 <template>
   <v-container pa-0>
-    <v-layout style="width: 100%" v-if="loading">
+    <v-layout style="width: 100%" v-if="!model">
       <v-flex xs12 class="text-xs-center">
         <v-progress-circular
           indeterminate
@@ -14,8 +14,9 @@
       <v-flex xs12 md12 sm12>
         <v-carousel hide-delimiters dark style="height: 400px">
           <v-carousel-item
-            v-for="(item,i) in Object.values(model.images)"
-            :src="item" :key="i"></v-carousel-item>
+            v-if="model.images"
+            v-for="(item,i) in model.images"
+            :src="item.url" :key="i"></v-carousel-item>
         </v-carousel>
       </v-flex>
     </v-layout>
@@ -26,7 +27,7 @@
             <v-card-title primary-title>
               <div class="review">
                 <div class="headline">{{model.name}}</div>
-                <span class="grey--text">{{model.location.formatted_address}}</span>
+                <span class="grey--text">{{model.formattedAddress}}</span>
               </div>
               <v-spacer></v-spacer>
               <v-chip disabled color="background" text-color="white">
@@ -52,7 +53,7 @@
         <v-flex>
           <v-divider></v-divider>
           <v-card class="elevation-0">
-            <v-container v-if="model.noOfRating !== 0 && model.noOfRating !== null && model.noOfRating !== undefined">
+            <v-container v-if="model.noOfReviews !== 0 && model.noOfReviews !== null && model.noOfReviews !== undefined">
               <v-layout row>
                 <v-flex sm2 class="mr-2">
                   <v-chip disabled color="background" text-color="white" >
@@ -61,7 +62,7 @@
                   </v-chip>
                 </v-flex>
                 <v-flex sm8>
-                  <div>Based on {{model.noOfRating}} ratings</div>
+                  <div>Based on {{model.noOfReviews}} ratings</div>
                   <div>Weighted average based on user's credibility on JustCredo.</div>
                 </v-flex>
               </v-layout>
@@ -100,28 +101,28 @@
             <v-divider></v-divider>
             <v-container>
               <v-layout row wrap>
-                <v-flex sm6 v-if="model.categories !== null && model.categories !== undefined">
+                <v-flex sm6 v-if="model.subCategories !== null && model.subCategories !== undefined">
                   <v-list dense>
                     <div class="heading ml-3" style="font-weight: bold">Categories</div>
-                    <v-list-tile v-for="(item,i) in Object.keys(model.categories)" :key="i">
+                    <v-list-tile v-for="(item,i) in model.subCategories" :key="i">
                       <v-list-tile-action>
                         <v-icon color="blue">star</v-icon>
                       </v-list-tile-action>
                       <v-list-tile-content>
-                        <v-list-tile-title v-text="item"></v-list-tile-title>
+                        <v-list-tile-title v-text="item.name"></v-list-tile-title>
                       </v-list-tile-content>
                     </v-list-tile>
                   </v-list>
                 </v-flex>
-                <v-flex sm6 v-if="model.gender !== null && model.gender !== undefined">
+                <v-flex sm6 v-if="model.genders !== null && model.genders !== undefined">
                   <v-list dense>
                     <div class="heading ml-3" style="font-weight: bold">Type</div>
-                    <v-list-tile v-for="(item,i) in Object.keys(model.gender)" :key="i" class="ma-0">
+                    <v-list-tile v-for="(item,i) in model.genders" :key="i" class="ma-0">
                       <v-list-tile-action>
                         <v-icon color="blue">star</v-icon>
                       </v-list-tile-action>
                       <v-list-tile-content dense>
-                        <v-list-tile-title v-text="item"></v-list-tile-title>
+                        <v-list-tile-title v-text="item.name"></v-list-tile-title>
                       </v-list-tile-content>
                     </v-list-tile>
                   </v-list>
@@ -137,30 +138,56 @@
 </template>
 
 <script>
+import config from "@/config.js";
+import axios from "axios";
+import ApiEndpoints from "@/constants/ApiEndpoints";
+
 export default {
   name: "INDEX",
+  async asyncData({ store, params }) {
+    let educationalPlace = store.getters["school/schools"](params.id);
+    if ( educationalPlace === null || educationalPlace === undefined){
+        try {
+            let { data } = await axios.get(
+                config.baseUrl + ApiEndpoints.GET_EP_BY_ID,{
+                    params: {
+                      id: params.id,
+                    }
+                }
+              );
+              store.dispatch("school/storeSchool", {data: data })
+              return{
+                model:data
+              }
+        } catch (error) {
+            console.log("middleware/place.js error ==>",error)
+        }
+    }
+  },
+  head () {
+    let model = this.model;
+    console.log(model)
+    return {
+      title: `${model.name} | ${model.formattedAddress}`,
+      meta: [
+        {
+          hid: `description`,
+          name: 'description',
+          content: `${model.name} - ${model.description}`
+        },
+        {
+          hid: `keywords`,
+          name: 'keywords',
+          keywords: `${model.name},details,rating,reviews,education,feeds,
+            blogs,contact,facilities,extracurriculars,acitivities,blogs,reviews`        }
+      ]
+    }
+  },
   data: () => ({
     show: false,
-    model:null,
-    loading:true
+    loading:false,
   }),
   created(){
-    const id = this.$route.params.id;
-    const school = this.$store.getters["school/school"](id);
-    if (school === undefined || school === null) {
-      this.$store.dispatch("school/findSchool", { id: id }) //find and storing school to the store
-        .then(response => {
-          this.model = response.data;
-          this.loading = false;
-        }, error => {
-          this.loading = false;
-          console.error(error);
-          //this.$router.push(`/error?error=${error}`);
-        });
-    }else {
-      this.model = school;
-      this.loading = false;
-    }
   },
   methods:{
     onReviewClick: function () {

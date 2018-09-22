@@ -7,20 +7,20 @@
             <v-layout row wrap>
               <v-flex
                 sm3 xs6
-                v-for="(item,i) in Object.keys(model.classes)" :key="i">
-                <TextWithStar icon="star" :text="item"></TextWithStar>
+                v-for="(item,i) in model.classes" :key="i">
+                <TextWithStar icon="star" :text="item.name"></TextWithStar>
               </v-flex>
             </v-layout>
           </v-container>
         </v-flex>
-        <v-flex xs12 mb-5 v-if="model.classesType !== null && model.classesType !== undefined">
-          <div class="heading" style="font-weight: bold">Classes</div>
+        <v-flex xs12 mb-5 v-if="model.subjects !== null && model.subjects !== undefined">
+          <div class="heading" style="font-weight: bold">Subjects</div>
           <v-container fluid v-bind="{ [`grid-list-xs`]: true }">
             <v-layout row wrap>
               <v-flex
                 sm3 xs6
-                v-for="(item,i) in Object.keys(model.classesType)" :key="i">
-                <TextWithStar icon="star" :text="item"></TextWithStar>
+                v-for="(item,i) in model.subjects" :key="i">
+                <TextWithStar icon="star" :text="item.name"></TextWithStar>
               </v-flex>
             </v-layout>
           </v-container>
@@ -31,20 +31,20 @@
             <v-layout row wrap>
               <v-flex
                 sm3 xs6
-                v-for="(item,i) in Object.keys(model.singing)" :key="i">
-                <TextWithStar icon="star" :text="item"></TextWithStar>
+                v-for="(item,i) in model.singing" :key="i">
+                <TextWithStar icon="star" :text="item.name"></TextWithStar>
               </v-flex>
             </v-layout>
           </v-container>
         </v-flex>
-        <v-flex xs12  mb-5 v-if="model.dancing !== null && model.dancing !== undefined">
+        <v-flex xs12  mb-5 v-if="model.dances !== null && model.dances !== undefined">
           <div class="heading" style="font-weight: bold">Dancing</div>
           <v-container fluid v-bind="{ [`grid-list-xs`]: true }">
             <v-layout row wrap>
               <v-flex
                 sm3 xs6
-                v-for="(item,i) in Object.keys(model.dancing)" :key="i">
-                <TextWithStar icon="star" :text="item"></TextWithStar>
+                v-for="(item,i) in model.dances" :key="i">
+                <TextWithStar icon="star" :text="item.name"></TextWithStar>
               </v-flex>
             </v-layout>
           </v-container>
@@ -55,8 +55,8 @@
             <v-layout row wrap>
               <v-flex
                 sm3 xs6
-                v-for="(item,i) in Object.keys(model.instruments)" :key="i">
-                <TextWithStar icon="star" :text="item"></TextWithStar>
+                v-for="(item,i) in model.instruments" :key="i">
+                <TextWithStar icon="star" :text="item.name"></TextWithStar>
               </v-flex>
             </v-layout>
           </v-container>
@@ -67,15 +67,55 @@
 
 <script>
 import TextWithStar from "@/components/utils/TextWithStar";
+import config from "@/config.js";
+import axios from "axios";
+import ApiEndpoints from "@/constants/ApiEndpoints";
 export default {
   name: "SchoolClasses",
   components: { TextWithStar },
+  async asyncData({ store, params }) {
+    let educationalPlace = store.getters["school/schools"](params.id);
+    if ( educationalPlace === null || educationalPlace === undefined){
+        try {
+            let { data } = await axios.get(
+                config.baseUrl + ApiEndpoints.GET_EP_BY_ID,{
+                    params: {
+                      id: params.id,
+                    }
+                }
+              );
+              store.dispatch("school/storeSchool", {data: data })
+              return{
+                model:data
+              }
+        } catch (error) {
+            console.log("middleware/place.js error ==>",error)
+        }
+    }
+  },
+  head () {
+    let model = this.model;
+    return {
+      title: `${model.name} | Classes, Subjects`,
+      meta: [
+        {
+          hid: `description`,
+          name: 'description',
+          content: `${model.name} - ${model.description}`
+        },
+        {
+          hid: `keywords`,
+          name: 'keywords',
+          keywords: `${model.name},details,rating,reviews,education,feeds,
+            blogs,contact,facilities,extracurriculars,acitivities,blogs,reviews`
+        }
+      ]
+    }
+  },
   data: () => ({
     show: false,
-    model: null
   }),
   created() {
-    this.model = this.$store.getters["school/school"](this.$route.params.id);
   }
 };
 </script>

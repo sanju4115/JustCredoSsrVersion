@@ -56,6 +56,9 @@ export default {
     storeSchools({ commit, getters }, payload) {
       commit("setLoadedSchools", payload);
     },
+    storeSchool({ commit, getters }, payload) {
+      commit("setLoadedSchool", payload);
+    },
     clearSchools({commit}){
       commit("clearSchools");
     },
@@ -100,12 +103,11 @@ export default {
     }
   },
   getters: {
-    schools(state) {
-      return schoolId => {
-        return state.loadedSchools.find(school => {
-          return school.id === schoolId;
-        });
-      };
+    allLoadedSchool(state){
+      return state.loadedSchools;
+    },
+    schools(state) { 
+      return schoolId => state.loadedSchools.find(school => school.id == schoolId);
     },
     school(state) {
       return state.school;

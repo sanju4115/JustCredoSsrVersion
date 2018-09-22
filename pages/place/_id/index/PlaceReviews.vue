@@ -56,6 +56,25 @@ export default {
     AppUserHeaderLink,
     InfiniteLoading
   },
+  head () {
+      let model = this.model;
+      return {
+        title: `${model.name} | Reviews`,
+        meta: [
+          {
+            hid: `description`,
+            name: 'description',
+            content: `${model.name} - ${model.description}`
+          },
+          {
+            hid: `keywords`,
+            name: 'keywords',
+            keywords: `${model.name},details,rating,reviews,education,feeds,
+            blogs,contact,facilities,extracurriculars,acitivities,blogs,reviews`
+          }
+        ]
+      }
+  },
   data: () => ({
     reviews: [],
     nextQuery: null,

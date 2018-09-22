@@ -32,7 +32,7 @@ export default {
   },
   mounted() {
     axios.get(`https://api.ipgeolocation.io/getip`).then(res => {
-      cosole.log(res);
+      console.log(res);
     });
     
   }

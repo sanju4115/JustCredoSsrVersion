@@ -12,5 +12,6 @@ export default {
     GET_REVERSE_GEOCODE:'/api/client/addPlace/reverseGeocode',
     GET_AUTOCOMPLETE_RESULTS:'/api/client/addPlace/getAutocompleteResults',
     GET_PLACE_DETAILS_PACE_ID:'/api/client/addPlace/getPlaceDetailsFromPlaceId',
-    POST_SCHOOL_DETAIL:'/api/client/addPlace/submitSchool'
+    POST_SCHOOL_DETAIL:'/api/client/addPlace/submitSchool',
+    GET_EP_BY_ID: '/api/open/getEPById'
 }

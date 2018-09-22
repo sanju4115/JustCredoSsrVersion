@@ -16,7 +16,7 @@
                 show-arrows>
                 <v-tabs-slider color="white"></v-tabs-slider>
                 <v-tab
-                  v-for="item in tabItems" router :to="'/'+item.link">
+                  v-for="(item,index) in tabItems" :key = "index" router :to="'/'+item.link">
                   {{ item.text }}
                 </v-tab>
               </v-tabs>
