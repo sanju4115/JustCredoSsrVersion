@@ -162,13 +162,17 @@ export default {
         } catch (error) {
             console.log("middleware/place.js error ==>",error)
         }
+    }else{
+      return{
+              model:educationalPlace
+            }
     }
   },
   head () {
     let model = this.model;
     console.log(model)
     return {
-      title: `${model.name} | ${model.formattedAddress}`,
+      title: `${model.name} | ${model.formattedAddress} | Details`,
       meta: [
         {
           hid: `description`,

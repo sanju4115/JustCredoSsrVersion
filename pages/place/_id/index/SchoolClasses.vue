@@ -77,26 +77,31 @@ export default {
     let educationalPlace = store.getters["school/schools"](params.id);
     if ( educationalPlace === null || educationalPlace === undefined){
         try {
-            let { data } = await axios.get(
-                config.baseUrl + ApiEndpoints.GET_EP_BY_ID,{
-                    params: {
-                      id: params.id,
-                    }
-                }
-              );
-              store.dispatch("school/storeSchool", {data: data })
-              return{
-                model:data
+          let { data } = await axios.get(
+              config.baseUrl + ApiEndpoints.GET_EP_BY_ID,{
+                  params: {
+                    id: params.id,
+                  }
               }
+            );
+            store.dispatch("school/storeSchool", {data: data })
+
+            return{
+              model:data
+            }
         } catch (error) {
             console.log("middleware/place.js error ==>",error)
         }
+    }else{
+      return{
+              model:educationalPlace
+            }
     }
   },
   head () {
     let model = this.model;
     return {
-      title: `${model.name} | Classes, Subjects`,
+      title: `${model.name} | ${model.formattedAddress} | Classes, Subjects`,
       meta: [
         {
           hid: `description`,

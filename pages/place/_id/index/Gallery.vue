@@ -3,10 +3,20 @@
       <v-layout row wrap v-if="model.images !== null && model.images !== undefined">
         <v-flex xs4 v-for="(image,index) in model.images" :key="index" @click.stop="openCarousel(index)">
           <v-card flat tile>
-            <v-card-media
+            <v-img
+              :alt='`${model.name} - image`'
               :src="image.url"
-              height="150px">
-            </v-card-media>
+              height="150px"
+              :lazy-src="image.url">
+              <v-layout
+                slot="placeholder"
+                fill-height
+                align-center
+                justify-center
+                ma-0>
+                <v-progress-circular indeterminate color="primary lighten-5"></v-progress-circular>
+              </v-layout>
+            </v-img>
           </v-card>
         </v-flex>
       </v-layout>
@@ -15,7 +25,7 @@
           <v-card-title>
             Browse images here !
           </v-card-title>
-          <ImageCarousel :images="images" :value="imageIndex"></ImageCarousel>
+          <ImageCarousel :images="model.images" :value="imageIndex"></ImageCarousel>
           <v-card-actions>
             <v-btn color="accent" flat @click.stop="carouselDialogue=false">Close</v-btn>
           </v-card-actions>
@@ -33,7 +43,7 @@ import ApiEndpoints from "@/constants/ApiEndpoints";
 export default {
   name: "Gallery",
   components: { ImageCarousel },
-  async asyncData({ store, params }) {
+  asyncData({ store, params }) {
     let educationalPlace = store.getters["school/schools"](params.id);
     if ( educationalPlace === null || educationalPlace === undefined){
         try {
@@ -51,12 +61,16 @@ export default {
         } catch (error) {
             console.log("middleware/place.js error ==>",error)
         }
+    }else{
+      return{
+              model:educationalPlace
+            }
     }
   },
   head () {
     let model = this.model;
     return {
-      title: `${model.name} | Gallery`,
+      title: `${model.name} | ${model.formattedAddress} | Gallery`,
       meta: [
         {
           hid: `description`,

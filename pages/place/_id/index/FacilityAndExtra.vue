@@ -67,12 +67,16 @@ export default {
         } catch (error) {
             console.log("middleware/place.js error ==>",error)
         }
+    }else{
+      return{
+              model:educationalPlace
+            }
     }
   },
   head () {
     let model = this.model;
     return {
-      title: `${model.name} | Facilities, Extracuricullar Activities`,
+      title: `${model.name} | ${model.formattedAddress} | Facilities, Extracuricullar Activities`,
       meta: [
         {
           hid: `description`,
