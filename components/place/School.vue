@@ -18,16 +18,15 @@
         {{school.rating}}
         <v-icon right>star</v-icon>
       </v-chip>
-
       <v-icon medium color="teal darken-2">location_on</v-icon>
       <span v-if="distance">{{distance}}</span>
-      <div class="truncate mt-1">
+      <div class="text-truncate mt-1">
         <span class="body-2">{{school.name}}</span><br>
         <span class="colorSecondaryText--text" style="color: black">{{school.formattedAddress}}</span>
       </div>
     </v-card-title>
     <v-card-actions>
-      <v-btn flat color="light-blue darken-4" router :to="`/place/${school.id}`">Details</v-btn>
+      <v-btn flat color="light-blue darken-4" router :to="`/place/${school.publicId}`">Details</v-btn>
       <v-btn flat color="orange">Bookmark</v-btn>
     </v-card-actions>
   </v-card>

@@ -2,21 +2,27 @@
   <v-container fluid grid-list-md>
     <v-layout row wrap v-if="loadingSchool || loadingSchool">
       <v-flex d-flex xs6 sm9 md9 class="py-2">
-        <v-progress-circular class="ml-3" indeterminate color="accent" :size="20" :width="2"></v-progress-circular>
+        <v-progress-circular 
+          class="ml-3" 
+          indeterminate 
+          color="accent" 
+          :size="20" 
+          :width="2">
+        </v-progress-circular>
       </v-flex>
     </v-layout>
     <v-layout row wrap v-else>
       <v-flex d-flex xs3 sm2 md2>
         <v-avatar size="50">
-          <img :src="school.coverPic">
+          <img :src="place.coverPic">
         </v-avatar>
       </v-flex>
       <v-flex d-flex xs6 sm9 md9>
         <v-layout row wrap>
           <v-flex d-flex>
             <div>
-              <h4 class="mb-0">{{school.name}}</h4>
-              <div style="font-size: 12px">{{Object.values(school.address).join()}}</div>
+              <h4 class="mb-0">{{place.name}}</h4>
+              <div style="font-size: 12px">{{place.formattedAddress}}</div>
             </div>
           </v-flex>
         </v-layout>
@@ -30,14 +36,14 @@
 export default {
   name: "BlogHeader",
   props: {
-    schoolID: {
-      type: String,
+    place: {
+      type: Object,
       required: true
     }
   },
   data: () => ({
     school: null,
-    loadingSchool: true
+    loadingSchool: false
   }),
   methods:{
     findSchool(id) {
@@ -62,8 +68,8 @@ export default {
     }
   },
   created() {
-    const id = this.schoolID;
-    this.findSchool(id);
+    // const id = this.schoolID;
+    // this.findSchool(id);
   }
 };
 </script>

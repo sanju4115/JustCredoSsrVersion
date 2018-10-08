@@ -41,10 +41,17 @@ import BlogBody from "@/components/utils/BlogBody";
 export default {
   name: "PlaceBlogs",
   components: { BlogBody, BlogHeader, InfiniteLoading },
+  middleware : "place",
+  asyncData({ store, params }) {
+    let educationalPlace = store.getters["school/schools"](params.id);
+    return{
+            model:educationalPlace
+          }
+  },
   head () {
       let model = this.model;
       return {
-        title: `${model.name} | Blogs`,
+        title: `${model.name} | ${model.formattedAddress} | Blogs`,
         meta: [
           {
             hid: `description`,

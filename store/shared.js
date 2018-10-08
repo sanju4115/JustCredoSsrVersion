@@ -10,7 +10,9 @@ export default {
     errorText: null,
     errorSnackbar: false,
     successText: null,
-    successSnackbar:false
+    successSnackbar:false,
+    dialog:false,
+    dialogText:''
   }),
   mutations: {
     setLoading(state, payload) {
@@ -42,6 +44,12 @@ export default {
     },
     setSuccessSnackbar(state, payload){
       state.successSnackbar = payload;
+    },
+    setDialog(state, payload){
+      state.dialog = payload;
+    },
+    setDialogText(state, payload){
+      state.dialogText = payload;
     }
   },
   actions: {
@@ -68,6 +76,12 @@ export default {
     },
     setSuccessSnackbar({ commit }, payload){
       commit("setSuccessSnackbar", payload);
+    },
+    setDialog({ commit }, payload){
+      commit("setDialog", payload);
+    },
+    setDialogText({ commit }, payload){
+      commit("setDialogText", payload);
     }
   },
   getters: {
@@ -100,6 +114,12 @@ export default {
     },
     successSnackbar(state){
       return state.successSnackbar;
+    },
+    dialog(state){
+      return state.dialog
+    },
+    dialogText(state){
+      return state.dialogText
     }
   }
 };

@@ -1,20 +1,11 @@
 <template>
-  <v-container>
-    <v-layout row wrap>
-      <v-flex xs12>
-        <v-card>
-          <ReviewPost :model="model"></ReviewPost>
-        </v-card>
-      </v-flex>
+  <v-card flat class="elevation-24" height="600">
+    <v-container>
       <v-flex xs12>
         <v-layout row wrap v-if="reviews" v-for="review in reviews" mb-3>
           <v-card style="width: 100%">
             <v-flex>
               <FeedSchoolHeader :schoolID="review.schoolID"></FeedSchoolHeader>
-              <v-divider></v-divider>
-            </v-flex>
-            <v-flex>
-              <app-user-header-link :uid="review.userID"></app-user-header-link>
               <v-divider></v-divider>
             </v-flex>
             <v-flex>
@@ -25,8 +16,15 @@
         <v-layout>
           <v-flex>
             <infinite-loading @infinite="infiniteHandler" spinner="spiral">
+              <span slot="no-results">
+                <v-layout row wrap class="align-center">
+                  <v-flex xs12>
+                    <Message message="You have not reviewed any place yet."></Message>
+                  </v-flex>
+                </v-layout>
+              </span>
               <span slot="no-more">
-                <v-alert class="indicatorColor" :value="true">
+                <v-alert type="info" :value="true">
                       No more feeds !
                 </v-alert>
               </span>
@@ -34,46 +32,24 @@
           </v-flex>
         </v-layout>
       </v-flex>
-    </v-layout>
-  </v-container>
+    </v-container>
+  </v-card>
 </template>
 
 <script>
 import InfiniteLoading from "vue-infinite-loading";
-import AppUserHeaderLink from "@/components/utils/FeedUserHeader";
 import db from "@/services/firebaseInit";
-import FeedSchoolHeader from "@/components/utils/FeedSchoolHeader";
-import ReviewBody from "@/components/utils/ReviewBody";
-import Sponsored from "@/components/place/Sponsored";
-import ReviewPost from "@/components/utils/ReviewPost";
+import FeedSchoolHeader from "@/components/feedsAndBlogs/FeedSchoolHeader";
+import ReviewBody from "@/components/feedsAndBlogs/ReviewBody";
+import Message from "@/components/utils/Message";
+
 export default {
-  name: "PlaceReviews",
+  name: "shared-review",
   components: {
-    ReviewPost,
-    Sponsored,
+    Message,
     ReviewBody,
     FeedSchoolHeader,
-    AppUserHeaderLink,
     InfiniteLoading
-  },
-  head () {
-      let model = this.model;
-      return {
-        title: `${model.name} | Reviews`,
-        meta: [
-          {
-            hid: `description`,
-            name: 'description',
-            content: `${model.name} - ${model.description}`
-          },
-          {
-            hid: `keywords`,
-            name: 'keywords',
-            keywords: `${model.name},details,rating,reviews,education,feeds,
-            blogs,contact,facilities,extracurriculars,acitivities,blogs,reviews`
-          }
-        ]
-      }
   },
   data: () => ({
     reviews: [],
@@ -81,20 +57,14 @@ export default {
     LIMIT: 10,
     areaSelected: null,
     firstTime: true,
-    reviewSubscription: null,
-    category: {
-      key: "primarySchool",
-      name: "Popular And Sponsored"
-    },
-    schoolId:null,
-    model:null
+    reviewSubscription:null
   }),
   created: function() {
-    this.schoolId = this.$route.params.id;
-    this.model = this.$store.getters["school/school"](this.schoolId);
+    console.log("Created")
+    this.areaSelected = this.$store.getters.areaSelected;
     this.nextQuery = db
       .collection("reviews")
-      .where("schoolID", "==", this.schoolId)
+      .where("userID","==",this.$store.getters.user.uid)
       .orderBy("timestamp", "desc")
       .limit(this.LIMIT);
   },
@@ -105,10 +75,10 @@ export default {
         .then(querySnapshot => {
           const temp = [];
           querySnapshot.forEach(doc => {
+            $state.loaded();
             temp.push(doc.data());
           });
           this.reviews = this.reviews.concat(temp);
-          $state.loaded();
           if (this.firstTime) {
             this.buildEvenListener();
             this.firstTime = false;
@@ -119,7 +89,6 @@ export default {
           const lastVisible = querySnapshot.docs[querySnapshot.docs.length - 1];
           this.nextQuery = db
             .collection("reviews")
-            .where("schoolID", "==", this.schoolId)
             .orderBy("timestamp", "desc")
             .startAfter(lastVisible)
             .limit(this.LIMIT);
@@ -129,9 +98,8 @@ export default {
         });
     },
     buildEvenListener() {
-      this.reviewSubscription = db
-        .collection("reviews")
-        .where("schoolID", "==", this.schoolId)
+      this.reviewSubscription = db.collection("reviews")
+        .where("userID","==",this.$store.getters.user.uid)
         .orderBy("timestamp", "desc")
         .limit(this.LIMIT)
         .onSnapshot(snapshot => {
@@ -150,11 +118,6 @@ export default {
         });
     }
   },
-  computed: {
-    currentUser() {
-      return this.$store.getters["login/user"];
-    }
-  },
 
   /**
    * Called before destroying this component
@@ -165,6 +128,10 @@ export default {
     if (this.reviewSubscription !== null) {
       this.reviewSubscription();
     }
+  },
+  mounted() {
+  },
+  computed: {
   }
 };
 </script>

@@ -24,5 +24,12 @@ export default {
       map[value] = true;
     });
     return map;
+  },
+  isObjectEmpty:function(obj) {
+    for(var key in obj) {
+        if(obj.hasOwnProperty(key))
+            return false;
+    }
+    return true;
   }
 };

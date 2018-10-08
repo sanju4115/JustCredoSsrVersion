@@ -5,11 +5,16 @@
         <v-flex xs12 md8 sm12 class="text-sm-left">
           <v-layout row wrap>
             <v-flex xs12 md12 sm12 class="mb-3">
-              <!--<ul class="players">-->
-                <!--<li v-for="item in tabItems">-->
-                  <!--<nuxt-link :to="'/'+item.link">{{ item.text }}</nuxt-link>-->
-                <!--</li>-->
-              <!--</ul>-->
+              <v-layout row wrap>
+                <v-flex xs12 md12 sm12>
+                  <v-carousel hide-delimiters dark style="height: 400px">
+                    <v-carousel-item
+                      v-if="model.images"
+                      v-for="(item,i) in model.images"
+                      :src="item.url" :key="i"></v-carousel-item>
+                  </v-carousel>
+                </v-flex>
+              </v-layout>
               <v-tabs
                 dark
                 color="indicatorColor"
@@ -42,6 +47,13 @@ export default {
   components: {
     Sponsored
   },
+  middleware : "place",
+  asyncData({ store, params }) {
+    let educationalPlace = store.getters["school/schools"](params.id);
+    return{
+            model:educationalPlace
+          }
+  },
   data() {
     return {
       category: {
@@ -55,12 +67,12 @@ export default {
     let id = this.$route.params.id;
     this.tabItems = [
       { text: "Details", link: "place/" + id + "/" },
-      { text: "Classes", link: "place/" + id + "/SchoolClasses" },
-      { text: "Facilities", link: "place/" + id + "/FacilityAndExtra" },
-      { text: "Gallery", link: "place/" + id + "/Gallery" },
-      { text: "Blogs", link: "place/" + id + "/PlaceBlogs" },
-      { text: "Reviews", link: "place/" + id + "/PlaceReviews" },
-      { text: "Contact", link: "place/" + id + "/SchoolGallery" }
+      { text: "Classes", link: "place/" + id + "/school-classes" },
+      { text: "Facilities", link: "place/" + id + "/facility-and-extra" },
+      { text: "Gallery", link: "place/" + id + "/gallery" },
+      { text: "Blogs", link: "place/" + id + "/place-blogs" },
+      { text: "Reviews", link: "place/" + id + "/place-reviews" },
+      { text: "Contact", link: "place/" + id + "/gallery" }
     ];
   },
   computed: {}

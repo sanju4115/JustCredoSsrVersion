@@ -80,7 +80,6 @@ export default {
     },
 
     autoSignIn({ commit, state }, payload) {
-      console.log("autosignin")
       commit("setLoading", false);
       commit("setUser", payload);
       //afterSignInUserSpecificTask(commit, state, payload)

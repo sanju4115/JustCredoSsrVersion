@@ -43,29 +43,12 @@ import ApiEndpoints from "@/constants/ApiEndpoints";
 export default {
   name: "Gallery",
   components: { ImageCarousel },
+  middleware : "place",
   asyncData({ store, params }) {
     let educationalPlace = store.getters["school/schools"](params.id);
-    if ( educationalPlace === null || educationalPlace === undefined){
-        try {
-            let { data } = await axios.get(
-                config.baseUrl + ApiEndpoints.GET_EP_BY_ID,{
-                    params: {
-                      id: params.id,
-                    }
-                }
-              );
-              store.dispatch("school/storeSchool", {data: data })
-              return{
-                model:data
-              }
-        } catch (error) {
-            console.log("middleware/place.js error ==>",error)
-        }
-    }else{
-      return{
-              model:educationalPlace
-            }
-    }
+    return{
+            model:educationalPlace
+          }
   },
   head () {
     let model = this.model;

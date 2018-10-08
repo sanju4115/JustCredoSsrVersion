@@ -169,7 +169,7 @@ export default {
   },
   async created() {
     try {
-      let idToken = await firebase.auth().currentUser.getIdToken(/* forceRefresh */ true);
+      let idToken = this.$cookies.get('firebase-user-token');
       console.log(idToken);
       try {
         let { data } = await axios.get(config.baseUrl + ApiEndpoints.GET_FORM_DATA_FOR_SCHOOL,{
@@ -258,7 +258,7 @@ export default {
           formData.append("coverPic", blob);
           formData.append("schoolDetailRequest", JSON.stringify(school));
           try {
-          let idToken = await firebase.auth().currentUser.getIdToken(/* forceRefresh */ true);
+          let idToken = this.$cookies.get('firebase-user-token');
             try {
               let { data } = await axios.post(
                 config.baseUrl + ApiEndpoints.POST_SCHOOL_DETAIL,

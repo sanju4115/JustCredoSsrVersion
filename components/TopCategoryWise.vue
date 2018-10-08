@@ -24,7 +24,7 @@
         style="cursor: pointer;" 
         xs6 sm4 md3 pr-2 
         v-for="school in category.epBasic" :key="school.id" 
-        @click="onClickSchool(school.id)">
+        @click="onClickSchool(school.publicId)">
         <School :school="school"></School>
       </v-flex>
     </v-layout>

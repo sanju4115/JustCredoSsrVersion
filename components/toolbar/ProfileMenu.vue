@@ -91,17 +91,21 @@ export default {
   }),
   methods: {
     onLogout() {
-      db
-        .collection("notification_tokens")
-        .doc(this.user.firebaseUid)
-        .delete()
-        .then(() => {
-          console.log("main.js deleted notification token");
-          this.$store.dispatch("login/logout");
-        })
-        .catch(err => {
-          console.log("ProfileMenu.vue error in deleting notification token", err);
-        });
+      this.$store.dispatch("login/logout").then(()=>{
+        this.$router.push("/login");
+        this.$cookies.set('firebase-user-token', null)
+      });
+      // db
+      //   .collection("notification_tokens")
+      //   .doc(this.user.firebaseUid)
+      //   .delete()
+      //   .then(() => {
+      //     console.log("main.js deleted notification token");
+      //     this.$store.dispatch("login/logout");
+      //   })
+      //   .catch(err => {
+      //     console.log("ProfileMenu.vue error in deleting notification token", err);
+      //   });
     },
     onAreaChange() {
       console.log("changed " + this.areaSelected);

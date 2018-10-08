@@ -3,13 +3,14 @@ import config from "@/config.js";
 import axios from "axios";
 import ApiEndpoints from "@/constants/ApiEndpoints";
 
-export default ({store, redirect}) => {
+export default ({store, redirect, isServer,app}) => {
   return new Promise((resolve) => {
     firebase.auth().onAuthStateChanged(async user => {
-      // Set service worker registered false as browser refresh
-      store.dispatch("login/setServiceWorkerRegistered", false);
-      //store.dispatch("school/clearSchools");
+      store.dispatch("login/setServiceWorkerRegistered", false); // Set service worker registered false as browser refresh
       if (user) {
+        console.log("Authentication changed")
+        store.dispatch("shared/setDialogText", "Signing In");
+        store.dispatch("shared/setDialog", true);
         try {
           var response = await axios.get(
             config.baseUrl + ApiEndpoints.SIGN_IN_BY_FIREBASE_UID,{
@@ -17,18 +18,22 @@ export default ({store, redirect}) => {
                   firebaseUid: user.uid,
                 }
             });
+            let idToken = await firebase.auth().currentUser.getIdToken(/* forceRefresh */ true);
+            if (idToken) {
+                app.$cookies.set('firebase-user-token', idToken)
+            }
             store.dispatch("login/autoSignIn", response.data);
-            console.log(redirect)
-            redirect('/')
         } catch (error) {
           console.log("Error response ==>",error.response, error)
         }
       } else {
-       //User session ended so clear user and location
-        // store.dispatch("location/clearLocation");
-        // store.dispatch("login/clearUser");
+        
       }
+      console.log("Authentication changed")
+      store.dispatch("shared/setDialog", false);
+      store.dispatch("shared/setDialogText", "");
       resolve()
-    })
+    });
+    
   })
 }

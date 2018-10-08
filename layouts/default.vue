@@ -31,18 +31,45 @@
     <Footer></Footer>
     <v-snackbar
       color="error"
-      bottom
-      v-model="errorSnackbar">
+      vertical
+      top
+      right
+      :timeout=0
+      :value="errorSnackbar">
       {{ errorText }}
       <v-btn dark flat @click.native="closeErrorSnackbar()">Close</v-btn>
     </v-snackbar>
     <v-snackbar
       color="success"
-      bottom
-      v-model="successSnackbar">
+      vertical
+      top
+      right
+      :timeout=0
+      :value="successSnackbar">
       {{ successText }}
       <v-btn dark flat @click.native="closeSuccessSnackbar()">Close</v-btn>
     </v-snackbar>
+    <v-dialog
+        v-model="commonLoadingDialog"
+        persistent
+        height="300"
+        width="300">
+        <v-card
+            color="primary"
+            dark>
+            <v-card-text>
+                <div>
+                    {{dialogText}}
+                </div>
+                Hold on
+                <v-progress-linear
+                    indeterminate
+                    color="white"
+                    class="mb-0">
+                </v-progress-linear>
+            </v-card-text>
+        </v-card>
+    </v-dialog>
   </v-app>
 </template>
 
@@ -77,7 +104,7 @@ export default {
           this.$store.dispatch("shared/setErrorSnackbar",false);
     },
     closeSuccessSnackbar(){
-          this.$store.dispatch("shared/setErrorSnackbar",false);
+          this.$store.dispatch("shared/setSuccessSnackbar",false);
     }
   },
   computed: {
@@ -98,6 +125,12 @@ export default {
     },
     successSnackbar(){
       return this.$store.getters["shared/successSnackbar"];
+    },
+    commonLoadingDialog(){
+      return this.$store.getters["shared/dialog"];
+    },
+    dialogText(){
+      return this.$store.getters["shared/dialogText"];
     }
   },
   head() {

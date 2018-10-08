@@ -90,16 +90,6 @@ export default {
           link: "/blogs"
         },
         {
-          icon: "person",
-          text: "Profile",
-          link: "/profile"
-        },
-        {
-          icon: "border_color",
-          text: "Edit Profile",
-          link: "/editProfile"
-        },
-        {
         icon: "settings",
         text: "Services",
         link: "/services"
@@ -138,6 +128,16 @@ export default {
               text: "Add Place",
               link: "/addPlace"
             });
+        items.push({
+          icon: "person",
+          text: "Profile",
+          link: "/profile/" + user.firebaseUid
+        });
+        items.push({
+          icon: "border_color",
+          text: "Edit Profile",
+          link: "/editProfile"
+        });
         user.authorities.forEach(element => {
           if(element.authority=== "ROLE_ADMIN"){
             items.push({

@@ -13,7 +13,7 @@ export default {
   mutations: {
     setLoadedSchool(state, payload) {
       let presentSchool = state.loadedSchools.find(school => {
-        return school.id === payload.data.id;
+        return school.publicId === payload.data.publicId;
       });
       if (presentSchool === null || presentSchool === undefined){
         state.loadedSchools.push(payload.data);
@@ -22,7 +22,7 @@ export default {
     setLoadedSchools(state, payload) {
       payload.data.forEach(schoolToSave =>{
         let presentSchool = state.loadedSchools.find(school => {
-          return school.id === schoolToSave.id;
+          return school.publicId === schoolToSave.publicId;
         });
 
         if (presentSchool === null || presentSchool === undefined){
@@ -107,7 +107,7 @@ export default {
       return state.loadedSchools;
     },
     schools(state) { 
-      return schoolId => state.loadedSchools.find(school => school.id == schoolId);
+      return schoolId => state.loadedSchools.find(school => school.publicId == schoolId);
     },
     school(state) {
       return state.school;

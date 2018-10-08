@@ -1,5 +1,7 @@
 <template>
-    <LocationView 
+    <LocationView
+        :heading="heading"
+        :subHeading="subHeading"
         :localities=localities 
         baseRoute="/directory/"
         :showCategory=false
@@ -23,6 +25,8 @@ export default {
      }
   },
   data: () => ({
+    heading : "Countries To Browse",
+    subHeading: "Select country to browse educational place"
   }),
   created() {
   },

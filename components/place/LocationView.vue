@@ -9,7 +9,9 @@
     <v-container class="teal colorPrimaryText--text text-xs-center mt-0 fluid">
       <v-layout row wrap>
         <v-flex xs12>
-          <h1 class="display-1 mb-0 font-weight-medium" style="font-weight: bold">Browse Educational Places Location Wise</h1>
+          <h1 class="display-1 mb-0 font-weight-medium" style="font-weight: bold">
+            Browse Educational Places Location Wise
+          </h1>
         </v-flex>
         <v-flex xs12>
           <div class="headline">Click on tiles to see more</div>
@@ -17,18 +19,16 @@
       </v-layout>
     </v-container>
     <v-container>
-      <div>
-          <v-breadcrumbs large>
-              <v-icon slot="divider">forward</v-icon>
-              <v-breadcrumbs-item
-                  v-for="item in breadcrumbs"
-                  :key="item.text"
-                  :disabled="item.disabled"
-                  :to="item.to">
-                  {{ item.text }}
-              </v-breadcrumbs-item>
-          </v-breadcrumbs>
-        </div>
+    <v-breadcrumbs large v-if="breadcrumbs.length > 0">
+        <v-icon slot="divider">forward</v-icon>
+        <v-breadcrumbs-item
+            v-for="item in breadcrumbs"
+            :key="item.text"
+            :disabled="item.disabled"
+            :to="item.to">
+            {{ item.text }}
+        </v-breadcrumbs-item>
+    </v-breadcrumbs>
     </v-container>
     <v-container class="justify-center" v-if="showCategory">
       <v-layout row wrap class="justify-center">
@@ -72,9 +72,19 @@
         </v-flex>
       </v-layout>
     </v-container>
-    <v-container class="justify-center mt-3">
+    <v-container class="justify-center mt-0 pt-0">
       <v-layout row wrap class="justify-center">
-        <v-flex xs12 sm6 md3 pr-2 mt-3 v-if="localities"
+        <!-- <v-flex xs12>
+          <v-card flat transparent pa-0>
+            <v-card-title primary-title>
+              <div>
+                <h3 class="headline mb-0" v-if="heading">{{heading}}</h3>
+                <div v-if="subHeading">{{subHeading}}</div>
+              </div>
+            </v-card-title>
+          </v-card>
+        </v-flex> -->
+        <v-flex xs12 sm6 md3 pr-2 v-if="localities"
                 v-for="locality in localities"
                 :key="locality.id"
                 @click="onLocalityClick(locality)">
@@ -96,6 +106,14 @@ import FooterMessage from "@/components/footer/FooterMessage";
 export default {
   name: "LocationView",
    props:{
+    heading:{
+      type: String,
+      required:false
+    },
+    subHeading:{
+      type: String,
+      required:false
+    },
     localities: {
       type: Array,
       required: true
@@ -131,7 +149,7 @@ export default {
     },
     onLocalityClick(locality) {
       console.log("category clicked");
-      this.$router.push(this.baseRoute + locality.id);
+      this.$router.push(this.baseRoute + locality.publicId);
     }
   }
 };

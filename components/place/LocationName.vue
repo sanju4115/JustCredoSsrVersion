@@ -3,7 +3,7 @@
         <v-card
             slot-scope="{ hover }"
             :class="`elevation-${hover ? 12 : 2}`"
-            class="mx-auto"
+            class="mx-auto mt-3"
             width="250">
             <v-img
                 v-if="showImage"
@@ -15,7 +15,7 @@
                     <span class="subheading">{{locality.name}}</span>
                 </div>
                 <v-spacer></v-spacer>
-                <v-btn icon class="mr-0" :to="baseRoute+locality.id">
+                <v-btn icon class="mr-0" :to="baseRoute+locality.publicId">
                 <v-icon dark>chevron_right</v-icon>
                 </v-btn>
             </v-card-title>

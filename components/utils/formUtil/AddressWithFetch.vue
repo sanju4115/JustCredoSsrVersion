@@ -1,10 +1,7 @@
 <template>
-  <v-container>
-    <v-card light>
-      <v-layout row wrap fluid>
-        <v-flex xs12 ml-3 mt-3>
-          <span class="subheader">Select address of the place*</span>
-        </v-flex>
+  <v-container pa-0>
+    <v-card light pa-0>
+      <v-layout row wrap fluid justify-center text-xs-center>
         <v-flex xs12 md6 >
           <v-card-text>
             <v-autocomplete
@@ -22,10 +19,10 @@
             ></v-autocomplete>
           </v-card-text>
         </v-flex>
-        <v-flex xs8 md4 lg3 v-if="!loadingLocation" mt-4>
-          <v-btn class="justify-center" color="success" @click.stop="fetchUserLocation">Enable Location & Start</v-btn>
+        <v-flex xs12 sm5 md3 v-if="!loadingLocation" mt-4>
+          <v-btn class="justify-center" color="success" @click.stop="fetchUserLocation">Enable Location</v-btn>
         </v-flex>
-        <v-flex xs4 md2 lg2 mt-4>
+        <v-flex xs12 sm5 md3 mt-4>
             <v-btn
               :disabled="!var_location"
               color="success"
@@ -95,7 +92,8 @@ export default {
   },
   async created(){
     try {
-        this.idToken = await firebase.auth().currentUser.getIdToken(/* forceRefresh */ true);
+        //this.idToken = await firebase.auth().currentUser.getIdToken(/* forceRefresh */ true);
+        this.idToken = this.$cookies.get('firebase-user-token')
     }catch (error) {
         console.log("Error in getting the token ==>",error);
     } 

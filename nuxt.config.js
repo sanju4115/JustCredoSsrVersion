@@ -52,6 +52,7 @@ module.exports = {
     "@/plugins/fireauth",
     "@/plugins/location",
     //{ src: "@/plugins/localStorage.js", ssr: false }
+    //{ src: "~plugins/quill-editor.js", ssr: false }
   ],
 
   /*
