@@ -2,20 +2,22 @@ e<template>
   <v-layout row wrap class="pa-4">
     <v-flex xs6 sm4 md4 v-if="categories && categories.length > 0">
       <p>Select Type</p>
-      <v-checkbox v-for="category in categories"
-                  :label="category.name"
+      <v-checkbox v-for="(category, index) in categories"
+                  :key="index"
+                  :label="category"
                   v-model="var_schoolType"
                   color="accent"
-                  hide-details :value="category.name"
+                  hide-details :value="category"
       ></v-checkbox>
     </v-flex>
     <v-flex xs6 sm4 md4 class="justify-center" v-if="genders && genders.length > 0">
       <p >Select Gender</p>
-      <v-checkbox v-for="gender in genders"
-                  :label="gender.name"
+      <v-checkbox v-for="(gender, index) in genders"
+                  :key="index"
+                  :label="gender"
                   v-model="var_genderList"
                   color="accent"
-                  hide-details :value="gender.name"
+                  hide-details :value="gender"
       ></v-checkbox>
     </v-flex>
   </v-layout>

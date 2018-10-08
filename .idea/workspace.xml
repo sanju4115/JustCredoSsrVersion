@@ -2,96 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4a680e74-7227-4eae-b616-bf0ad9f1244e" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/images/home/categories_bkgrnd.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/images/home/top_classroom_banner.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/images/logos/logo_web.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/dictionaries/sanjaykumar.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/TopCategoryWise.vue" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/addPlace/Address.vue" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/addPlace/MusicClassForm.vue" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/addPlace/SchoolForm.vue" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/addPlace/SportsClassForm.vue" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/alerts/ErrorAlert.vue" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/distance/DistanceForm.vue" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/distance/PlaceLocation.vue" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/footer/Footer.vue" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/list/EntityFilter.vue" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/navigationDrawer/NavigationDrawer.vue" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/place/School.vue" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/place/SchoolDynamic.vue" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/place/Sponsored.vue" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/toolbar/DistanceMenu.vue" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/toolbar/NotificationToolbar.vue" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/toolbar/ProfileMenu.vue" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/toolbar/Toolbar.vue" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/utils/AlphaListFeature.vue" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/utils/AlphaTestimonial.vue" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/utils/BlogBody.vue" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/utils/BlogHeader.vue" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/utils/FeedSchoolHeader.vue" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/utils/FeedUserHeader.vue" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/utils/Header.vue" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/utils/ImageCarousel.vue" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/utils/ImageListView.vue" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/utils/ImageSelectAndPreview.vue" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/utils/LoginAndRegister.vue" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/utils/ReviewBody.vue" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/utils/ReviewPost.vue" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/utils/TextWithStar.vue" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/utils/formUtil/AddressWithFetch.vue" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/utils/formUtil/AlphaCardFeature.vue" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/utils/formUtil/BoardsAndClasses.vue" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/utils/formUtil/ButtonGroup.vue" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/utils/formUtil/CategoriesAndGender.vue" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/utils/formUtil/Description.vue" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/utils/formUtil/FacilitiesLike.vue" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/utils/formUtil/Login.vue" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/utils/formUtil/MusicClassInput.vue" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/utils/formUtil/Register.vue" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/utils/formUtil/SubjectClasses.vue" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/constants/images.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/middleware/about.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/middleware/categories.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/middleware/schoolsCategoryWise.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pages/about.vue" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pages/addPlace.vue" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pages/downloads.vue" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pages/home.vue" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pages/list/_category/index.vue" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pages/login.vue" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pages/mission.vue" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pages/partners.vue" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pages/place/_id/index.vue" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pages/place/_id/index/FacilityAndExtra.vue" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pages/place/_id/index/Gallery.vue" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pages/place/_id/index/PlaceBlogs.vue" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pages/place/_id/index/PlaceReviews.vue" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pages/place/_id/index/SchoolClasses.vue" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pages/place/_id/index/index.vue" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pages/services.vue" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/plugins/fireauth.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/plugins/location.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/services/firebaseConfig.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/services/firebaseInit.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/images/home/142138-OTFFC4-187_test-02.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/js/css3-animate-it.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/js/firebase-messaging-sw.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/store/categories.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/store/contents.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/store/filters.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/store/index.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/store/location.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/store/login.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/store/register.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/store/review.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/store/school.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/store/shared.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/utils/EntityConstants.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/utils/LocationUtil.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/utils/SchoolFormValidation.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/utils/SchoolUtil.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/utils/TImeUtil.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/utils/Util.js" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pages/home.vue" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/distance/PlaceLocation.vue" afterPath="$PROJECT_DIR$/components/distance/PlaceLocation.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/navigationDrawer/NavigationDrawer.vue" afterPath="$PROJECT_DIR$/components/navigationDrawer/NavigationDrawer.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/place/Sponsored.vue" afterPath="$PROJECT_DIR$/components/place/Sponsored.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/toolbar/ProfileMenu.vue" afterPath="$PROJECT_DIR$/components/toolbar/ProfileMenu.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/utils/formUtil/ButtonGroup.vue" afterPath="$PROJECT_DIR$/components/utils/formUtil/ButtonGroup.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/layouts/default.vue" afterPath="$PROJECT_DIR$/layouts/default.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/middleware/schoolsCategoryWise.js" afterPath="$PROJECT_DIR$/middleware/schoolsCategoryWise.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/nuxt.config.js" afterPath="$PROJECT_DIR$/nuxt.config.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package-lock.json" afterPath="$PROJECT_DIR$/package-lock.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/index.vue" afterPath="$PROJECT_DIR$/pages/index.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/store/school.js" afterPath="$PROJECT_DIR$/store/school.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/store/shared.js" afterPath="$PROJECT_DIR$/store/shared.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -108,32 +34,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="home.vue" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pages/home.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1065">
-              <caret line="71" column="16" lean-forward="false" selection-start-line="71" selection-start-column="16" selection-end-line="71" selection-end-column="16" />
-              <folding>
-                <marker date="1535486352000" expanded="true" signature="3546:3580" ph="{&quot;name&quot;: &quot;index&quot;...}" />
-                <marker date="1535486352000" expanded="true" signature="4818:4826" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PlaceLocation.vue" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/components/distance/PlaceLocation.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="13" column="34" lean-forward="false" selection-start-line="13" selection-start-column="34" selection-end-line="13" selection-end-column="34" />
-              <folding>
-                <marker date="1535557843000" expanded="true" signature="1732:1742" ph="{...}" />
-                <marker date="1535557843000" expanded="true" signature="2971:2979" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="login.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pages/login.vue">
           <provider selected="true" editor-type-id="text-editor">
@@ -147,24 +47,56 @@
       <file leaf-file-name="LoginAndRegister.vue" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/components/utils/LoginAndRegister.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="462">
+            <state relative-caret-position="1230">
               <caret line="83" column="29" lean-forward="false" selection-start-line="83" selection-start-column="29" selection-end-line="83" selection-end-column="29" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="package.json" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/package.json">
+      <file leaf-file-name="downloads.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pages/downloads.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="20" column="35" lean-forward="false" selection-start-line="20" selection-start-column="35" selection-end-line="20" selection-end-column="35" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="vuetify.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/store/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="90">
+              <caret line="6" column="8" lean-forward="false" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DistanceForm.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/components/distance/DistanceForm.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="package.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/package.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="300">
+              <caret line="21" column="35" lean-forward="false" selection-start-line="21" selection-start-column="35" selection-end-line="21" selection-end-column="35" />
+              <folding>
+                <marker date="1535901566000" expanded="true" signature="286:1076" ph="{&quot;@nuxtjs/axios&quot;: &quot;^5.0.0&quot;...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="vuetify.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/plugins/vuetify.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
@@ -179,7 +111,7 @@
       <file leaf-file-name="location.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/plugins/location.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
+            <state relative-caret-position="330">
               <caret line="24" column="11" lean-forward="false" selection-start-line="24" selection-start-column="11" selection-end-line="24" selection-end-column="11" />
               <folding />
             </state>
@@ -354,10 +286,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
       <pane id="Scratches" />
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -421,6 +350,9 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -585,11 +517,13 @@
       <workItem from="1535482750649" duration="1239000" />
       <workItem from="1535563081490" duration="34000" />
       <workItem from="1535563178295" duration="782000" />
+      <workItem from="1535828646104" duration="233000" />
+      <workItem from="1535910169318" duration="20000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="176276000" />
+    <option name="totallyTimeSpent" value="176529000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -613,7 +547,7 @@
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32889965" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32889965" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32889965" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24964234" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -647,25 +581,81 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/pages/home.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1065">
-          <caret line="71" column="16" lean-forward="false" selection-start-line="71" selection-start-column="16" selection-end-line="71" selection-end-column="16" />
-          <folding>
-            <marker date="1535486352000" expanded="true" signature="3546:3580" ph="{&quot;name&quot;: &quot;index&quot;...}" />
-            <marker date="1535486352000" expanded="true" signature="4818:4826" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/home.vue" />
     <entry file="file://$PROJECT_DIR$/components/distance/PlaceLocation.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
           <caret line="13" column="34" lean-forward="false" selection-start-line="13" selection-start-column="34" selection-end-line="13" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/login.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="29" column="23" lean-forward="false" selection-start-line="29" selection-start-column="23" selection-end-line="29" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/utils/LoginAndRegister.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1230">
+          <caret line="83" column="29" lean-forward="false" selection-start-line="83" selection-start-column="29" selection-end-line="83" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plugins/vuetify.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1535557843000" expanded="true" signature="1732:1742" ph="{...}" />
-            <marker date="1535557843000" expanded="true" signature="2971:2979" ph="{...}" />
+            <element signature="e#0#21#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plugins/location.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="24" column="11" lean-forward="false" selection-start-line="24" selection-start-column="11" selection-end-line="24" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/store/location.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/utils/LocationUtil.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="36" lean-forward="false" selection-start-line="5" selection-start-column="31" selection-end-line="5" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" column="35" lean-forward="false" selection-start-line="20" selection-start-column="35" selection-end-line="20" selection-end-column="35" />
+          <folding>
+            <marker date="1535901566000" expanded="true" signature="286:1076" ph="{&quot;@nuxtjs/axios&quot;: &quot;^5.0.0&quot;...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/home.vue" />
+    <entry file="file://$PROJECT_DIR$/components/distance/PlaceLocation.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="34" lean-forward="false" selection-start-line="13" selection-start-column="34" selection-end-line="13" selection-end-column="34" />
         </state>
       </provider>
     </entry>
@@ -721,17 +711,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pages/home.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1065">
-          <caret line="71" column="16" lean-forward="false" selection-start-line="71" selection-start-column="16" selection-end-line="71" selection-end-column="16" />
-          <folding>
-            <marker date="1535486352000" expanded="true" signature="3546:3580" ph="{&quot;name&quot;: &quot;index&quot;...}" />
-            <marker date="1535486352000" expanded="true" signature="4818:4826" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/home.vue" />
     <entry file="file://$PROJECT_DIR$/plugins/vuetify.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -772,10 +752,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="660">
           <caret line="44" column="66" lean-forward="false" selection-start-line="44" selection-start-column="39" selection-end-line="44" selection-end-column="66" />
-          <folding>
-            <marker date="1535557843000" expanded="true" signature="1732:1742" ph="{...}" />
-            <marker date="1535557843000" expanded="true" signature="2971:2979" ph="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -793,49 +769,59 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pages/home.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1065">
-          <caret line="71" column="16" lean-forward="false" selection-start-line="71" selection-start-column="16" selection-end-line="71" selection-end-column="16" />
-          <folding>
-            <marker date="1535486352000" expanded="true" signature="3546:3580" ph="{&quot;name&quot;: &quot;index&quot;...}" />
-            <marker date="1535486352000" expanded="true" signature="4818:4826" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/home.vue" />
     <entry file="file://$PROJECT_DIR$/components/distance/PlaceLocation.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
           <caret line="13" column="34" lean-forward="false" selection-start-line="13" selection-start-column="34" selection-end-line="13" selection-end-column="34" />
-          <folding>
-            <marker date="1535557843000" expanded="true" signature="1732:1742" ph="{...}" />
-            <marker date="1535557843000" expanded="true" signature="2971:2979" ph="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pages/login.vue">
+    <entry file="file://$PROJECT_DIR$/components/utils/LoginAndRegister.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="29" column="23" lean-forward="false" selection-start-line="29" selection-start-column="23" selection-end-line="29" selection-end-column="23" />
+        <state relative-caret-position="1230">
+          <caret line="83" column="29" lean-forward="false" selection-start-line="83" selection-start-column="29" selection-end-line="83" selection-end-column="29" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/plugins/vuetify.js">
+    <entry file="file://$PROJECT_DIR$/pages/downloads.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/store/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="8" lean-forward="false" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/distance/DistanceForm.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="21" column="35" lean-forward="false" selection-start-line="21" selection-start-column="35" selection-end-line="21" selection-end-column="35" />
           <folding>
-            <element signature="e#0#21#0" expanded="true" />
+            <marker date="1535901566000" expanded="true" signature="286:1076" ph="{&quot;@nuxtjs/axios&quot;: &quot;^5.0.0&quot;...}" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/plugins/location.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
+        <state relative-caret-position="330">
           <caret line="24" column="11" lean-forward="false" selection-start-line="24" selection-start-column="11" selection-end-line="24" selection-end-column="11" />
           <folding />
         </state>
@@ -859,19 +845,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/components/utils/LoginAndRegister.vue">
+    <entry file="file://$PROJECT_DIR$/pages/login.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="83" column="29" lean-forward="false" selection-start-line="83" selection-start-column="29" selection-end-line="83" selection-end-column="29" />
+        <state relative-caret-position="435">
+          <caret line="29" column="23" lean-forward="false" selection-start-line="29" selection-start-column="23" selection-end-line="29" selection-end-column="23" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
+    <entry file="file://$PROJECT_DIR$/plugins/vuetify.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="35" lean-forward="false" selection-start-line="20" selection-start-column="35" selection-end-line="20" selection-end-column="35" />
-          <folding />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

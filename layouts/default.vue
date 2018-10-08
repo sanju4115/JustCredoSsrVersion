@@ -10,8 +10,66 @@
         <nuxt ref="page"/>
       </v-container>
       <!--<vue-snotify></vue-snotify>-->
+      <!--Start of Location Dialogue Box-->
+    <v-dialog persistent v-model="locationView" width="500px">
+      <v-card class="grey darken-4 elevation-0">
+        <PlaceLocation
+          @closeLocationPopup="locationView = !locationView">
+        </PlaceLocation>
+        <v-card-actions class="align-content-end justify-end">
+          <v-btn flat
+                 v-if="!loading && location"
+                 dark
+                 @click.stop="locationView = !locationView">
+            Close
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+    <!--End of Location Dialogue Box-->
     </v-content>
     <Footer></Footer>
+    <v-snackbar
+      color="error"
+      vertical
+      top
+      right
+      :timeout=0
+      :value="errorSnackbar">
+      {{ errorText }}
+      <v-btn dark flat @click.native="closeErrorSnackbar()">Close</v-btn>
+    </v-snackbar>
+    <v-snackbar
+      color="success"
+      vertical
+      top
+      right
+      :timeout=0
+      :value="successSnackbar">
+      {{ successText }}
+      <v-btn dark flat @click.native="closeSuccessSnackbar()">Close</v-btn>
+    </v-snackbar>
+    <v-dialog
+        v-model="commonLoadingDialog"
+        persistent
+        height="300"
+        width="300">
+        <v-card
+            color="primary"
+            dark>
+            <v-card-text>
+                <div>
+                    {{dialogText}}
+                </div>
+                Hold on
+                <v-progress-linear
+                    indeterminate
+                    color="white"
+                    class="mb-0">
+                </v-progress-linear>
+            </v-card-text>
+        </v-card>
+    </v-dialog>
   </v-app>
 </template>
 
@@ -19,15 +77,62 @@
 import NavigationDrawer from "../components/navigationDrawer/NavigationDrawer";
 import Toolbar from "../components/toolbar/Toolbar";
 import Footer from "../components/footer/Footer";
+import PlaceLocation from "@/components/distance/PlaceLocation";
+
 export default {
-  components: { Footer, Toolbar, NavigationDrawer },
+  components: { Footer, Toolbar, NavigationDrawer,PlaceLocation },
   data() {
     return {
       dialog: false,
-      drawer: true
+      drawer: false,
+      locationView: false
     };
   },
-  computed: {},
+  mounted(){
+    this.drawer = true
+    // if (!this.location) {
+    //   this.locationView = true;
+    // } else {
+    //   if (!localStorage.getItem("firstTime")) {
+    //     this.locationView = true;
+    //     localStorage.setItem("firstTime", "true");
+    //   }
+    // }
+  },
+  methods:{
+    closeErrorSnackbar(){
+          this.$store.dispatch("shared/setErrorSnackbar",false);
+    },
+    closeSuccessSnackbar(){
+          this.$store.dispatch("shared/setSuccessSnackbar",false);
+    }
+  },
+  computed: {
+    location() {
+      return this.$store.getters["location/location"];
+    },
+    loading() {
+      return this.$store.getters["location/loading"];
+    },
+    errorText(){
+      return this.$store.getters["shared/errorText"];
+    },
+    errorSnackbar(){
+      return this.$store.getters["shared/errorSnackbar"];
+    },
+    successText(){
+      return this.$store.getters["shared/successText"];
+    },
+    successSnackbar(){
+      return this.$store.getters["shared/successSnackbar"];
+    },
+    commonLoadingDialog(){
+      return this.$store.getters["shared/dialog"];
+    },
+    dialogText(){
+      return this.$store.getters["shared/dialogText"];
+    }
+  },
   head() {
     return {
       script: [

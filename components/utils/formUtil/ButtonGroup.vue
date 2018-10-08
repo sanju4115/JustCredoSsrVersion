@@ -43,9 +43,7 @@ export default {
       this.$store.dispatch("shared/areaChange", {
         area: this.buttonsKeys[e].value
       });
-      console.log("before push");
-      this.$router.push("/");
-      console.log("after push");
+      this.$router.push("/loader");
     }
   },
   computed: {}

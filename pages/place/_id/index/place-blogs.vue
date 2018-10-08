@@ -41,6 +41,32 @@ import BlogBody from "@/components/utils/BlogBody";
 export default {
   name: "PlaceBlogs",
   components: { BlogBody, BlogHeader, InfiniteLoading },
+  middleware : "place",
+  asyncData({ store, params }) {
+    let educationalPlace = store.getters["school/schools"](params.id);
+    return{
+            model:educationalPlace
+          }
+  },
+  head () {
+      let model = this.model;
+      return {
+        title: `${model.name} | ${model.formattedAddress} | Blogs`,
+        meta: [
+          {
+            hid: `description`,
+            name: 'description',
+            content: `${model.name} - ${model.description}`
+          },
+          {
+            hid: `keywords`,
+            name: 'keywords',
+            keywords: `${model.name},details,rating,reviews,education,feeds,
+            blogs,contact,facilities,extracurriculars,acitivities,blogs,reviews`
+          }
+        ]
+      }
+  },
   data: () => ({
     blogs: [],
     nextQuery: null,

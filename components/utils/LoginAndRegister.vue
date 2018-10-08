@@ -1,5 +1,6 @@
 <template>
   <v-tabs
+    v-if="!user"
     dark
     color="primary"
     centered
@@ -70,22 +71,28 @@ export default {
   name: "LoginAndRegister",
   components: {Register, Login },
   created(){
-    console.log("LoginAndRegister created twice")
   },
   computed: {
     error() {
-      return this.$store.getters.error;
+      return this.$store.getters["shared/error"];
     },
     loginError() {
-      return this.$store.getters.loginError;
+      return this.$store.getters["login/loginError"];
+    },
+    user(){
+      let user = this.$store.getters["login/user"];
+      if(user != null){
+        this.$router.push("/")
+      }      
+      return user;
     }
   },
   methods: {
     onDismissed: function() {
-      this.$store.dispatch("clearError");
+      this.$store.dispatch("shared/clearError");
     },
     onDismissedLoginError() {
-      this.$store.dispatch("clearLoginError");
+      this.$store.dispatch("login/clearLoginError");
     },
     closeDialogue() {
       this.$emit("closeDialogue");

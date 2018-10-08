@@ -2,7 +2,7 @@
   <v-container fluid grid-list-sm>
     <v-layout row wrap>
       <v-flex xs4 v-for="i in size" :key="i" :class="{container:i===6}" @click.stop="openCarousel(i-1)">
-        <img class="image" :src="images[i-1]" width="100%" height="100%">
+        <img class="image" :src="images[i-1].url" width="100%" height="100%">
         <div class="content justify-center" v-if="i===6 && images.length > 6">
           <p>{{images.length - 6}} more images</p>
         </div>

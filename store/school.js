@@ -3,11 +3,7 @@ import db from "../services/firebaseInit";
 export default {
   state: () => ({
     loadedSchools: [],
-    primarySchool: [],
-    secondarySchool: [],
-    preSchool: [],
-    specialSchool: [],
-    internationalSchool: [],
+    school: [],
     musicClass: [],
     artClass: [],
     sportsClass: [],
@@ -17,7 +13,7 @@ export default {
   mutations: {
     setLoadedSchool(state, payload) {
       let presentSchool = state.loadedSchools.find(school => {
-        return school.id === payload.data.id;
+        return school.publicId === payload.data.publicId;
       });
       if (presentSchool === null || presentSchool === undefined){
         state.loadedSchools.push(payload.data);
@@ -26,7 +22,7 @@ export default {
     setLoadedSchools(state, payload) {
       payload.data.forEach(schoolToSave =>{
         let presentSchool = state.loadedSchools.find(school => {
-          return school.id === schoolToSave.id;
+          return school.publicId === schoolToSave.publicId;
         });
 
         if (presentSchool === null || presentSchool === undefined){
@@ -34,20 +30,8 @@ export default {
         }
       });
     },
-    primarySchool(state, payload) {
-      state.primarySchool = payload;
-    },
-    secondarySchool(state, payload) {
-      state.secondarySchool = payload;
-    },
-    preSchool(state, payload) {
-      state.preSchool = payload;
-    },
-    specialSchool(state, payload) {
-      state.specialSchool = payload;
-    },
-    internationalSchool(state, payload) {
-      state.internationalSchool = payload;
+    school(state, payload) {
+      state.school = payload;
     },
     musicClass(state, payload) {
       state.musicClass = payload;
@@ -71,6 +55,9 @@ export default {
   actions: {
     storeSchools({ commit, getters }, payload) {
       commit("setLoadedSchools", payload);
+    },
+    storeSchool({ commit, getters }, payload) {
+      commit("setLoadedSchool", payload);
     },
     clearSchools({commit}){
       commit("clearSchools");
@@ -96,20 +83,8 @@ export default {
           });
       });
     },
-    primarySchool({commit}, payload) {
-      commit("primarySchool", payload);
-    },
-    secondarySchool({commit}, payload) {
-      commit("secondarySchool", payload);
-    },
-    preSchool({commit}, payload) {
-      commit("preSchool", payload);
-    },
-    specialSchool({commit}, payload) {
-      commit("specialSchool", payload);
-    },
-    internationalSchool({commit}, payload) {
-      commit("internationalSchool", payload);
+    school({commit}, payload) {
+      commit("school", payload);
     },
     musicClass({commit}, payload) {
       commit("musicClass", payload);
@@ -128,27 +103,14 @@ export default {
     }
   },
   getters: {
+    allLoadedSchool(state){
+      return state.loadedSchools;
+    },
+    schools(state) { 
+      return schoolId => state.loadedSchools.find(school => school.publicId == schoolId);
+    },
     school(state) {
-      return schoolId => {
-        return state.loadedSchools.find(school => {
-          return school.id === schoolId;
-        });
-      };
-    },
-    primarySchool(state) {
-      return state.primarySchool;
-    },
-    secondarySchool(state) {
-      return state.secondarySchool;
-    },
-    preSchool(state) {
-     return state.preSchool;
-    },
-    specialSchool(state) {
-      return state.specialSchool;
-    },
-    internationalSchool(state) {
-      return state.internationalSchool;
+      return state.school;
     },
     musicClass(state) {
       return state.musicClass;
@@ -164,9 +126,6 @@ export default {
     },
     coachingClass(state) {
       return state.coachingClass;
-    },
-    clearSchools(state) {
-      state.loadedSchools = [];
     }
   }
 };

@@ -1,9 +1,6 @@
 <template>
   <v-img
-    :src="LOGIN_BANNER_2"
-    height="84vh"
-    :lazy-src="LAZY_LOADING_IMAGE">
-    <!-- <div :style="`background-image: url(${LOGIN_BANNER_2});min-height:84vh`"> -->
+    :src="LOGIN_BANNER_2">
       <v-container>
         <v-layout row wrap mt-5>
           <v-flex sm12 md6 pa-3>

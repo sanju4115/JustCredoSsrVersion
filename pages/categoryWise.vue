@@ -1,7 +1,11 @@
 <template>
   <v-container fluid pa-0>
-    <img src="/images/home/142138-OTFFC4-187_test-02.svg"
-                 class="secondary" style="margin-bottom: -1vh">
+    <v-img 
+      src="/images/home/142138-OTFFC4-187_test-02.svg" 
+      style="margin-bottom: -1vh"
+      :lazy-src="LAZY_LOADING_IMAGE"
+      >
+    </v-img>
     <v-container class="blue colorPrimaryText--text text-xs-center mt-0" fluid v-if="!shareMessage">
       <v-layout row wrap>
         <v-flex xs12>
@@ -84,38 +88,21 @@
         </v-layout>
       </v-container>
     </v-parallax>
-    <!--Start of Location Dialogue Box-->
-    <v-dialog persistent v-model="locationView" width="500px">
-      <v-card class="grey darken-4 elevation-0">
-        <PlaceLocation
-          @closeLocationPopup="locationView = !locationView">
-        </PlaceLocation>
-        <v-card-actions class="align-content-end justify-end">
-          <v-btn flat
-                 v-if="!loading && location"
-                 dark
-                 @click.stop="locationView = !locationView">
-            Close
-          </v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-dialog>
-    <!--End of Location Dialogue Box-->
+    
   </v-container>
 </template>
 
 <script>
+import db from "@/services/firebaseInit";
 import TopCategoryWise from "../components/TopCategoryWise";
 import images from "../constants/images";
-import PlaceLocation from "../components/distance/PlaceLocation";
 export default {
-  name: "index",
-  components: { PlaceLocation, TopCategoryWise },
+  name: "home",
+  components: { TopCategoryWise },
   middleware: "schoolsCategoryWise",
   data: () => ({
     FOOTER_1: images.FOOTER_1,
-    locationView: false,
-    shareMessage: false
+    LAZY_LOADING_IMAGE: images.LAZY_LOADING_IMAGE
   }),
   created() {
     this.shareMessage = !this.$store.getters["shared/serviceAvailable"];
@@ -124,12 +111,6 @@ export default {
     categories() {
       let categories = this.$store.getters["categories/categories"];
       return categories;
-    },
-    loading() {
-      return this.$store.getters["location/loading"];
-    },
-    location() {
-      return this.$store.getters["location/location"];
     }
   },
   methods: {
@@ -139,14 +120,7 @@ export default {
     }
   },
   mounted() {
-    if (!this.location) {
-      this.locationView = true;
-    } else {
-      if (!localStorage.getItem("firstTime")) {
-        this.locationView = true;
-        localStorage.setItem("firstTime", "true");
-      }
-    }
+    
   }
 };
 </script>

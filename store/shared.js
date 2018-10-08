@@ -5,8 +5,14 @@ export default {
     error: null,
     areaSelected: "geohash50",
     isUserAdmin: false,
-    drawerState: true,
-    isServiceAvailable: true
+    drawerState: false,
+    isServiceAvailable: true,
+    errorText: null,
+    errorSnackbar: false,
+    successText: null,
+    successSnackbar:false,
+    dialog:false,
+    dialogText:''
   }),
   mutations: {
     setLoading(state, payload) {
@@ -26,6 +32,24 @@ export default {
     },
     setServiceAvailable(state, payload) {
       state.isServiceAvailable = payload;
+    },
+    setErrorText(state, payload){
+      state.errorText = payload;
+    },
+    setErrorSnackbar(state, payload){
+      state.errorSnackbar = payload;
+    },
+    setSuccessText(state, payload){
+      state.successText = payload;
+    },
+    setSuccessSnackbar(state, payload){
+      state.successSnackbar = payload;
+    },
+    setDialog(state, payload){
+      state.dialog = payload;
+    },
+    setDialogText(state, payload){
+      state.dialogText = payload;
     }
   },
   actions: {
@@ -40,6 +64,24 @@ export default {
     },
     isServiceAvailable({ commit }, payload) {
       commit("setServiceAvailable", payload);
+    },
+    setErrorText({ commit }, payload){
+      commit("setErrorText", payload);
+    },
+    setErrorSnackbar({ commit }, payload){
+      commit("setErrorSnackbar", payload);
+    },
+    setSuccessText({ commit }, payload){
+      commit("setSuccessText", payload);
+    },
+    setSuccessSnackbar({ commit }, payload){
+      commit("setSuccessSnackbar", payload);
+    },
+    setDialog({ commit }, payload){
+      commit("setDialog", payload);
+    },
+    setDialogText({ commit }, payload){
+      commit("setDialogText", payload);
     }
   },
   getters: {
@@ -60,6 +102,24 @@ export default {
     },
     serviceAvailable(state) {
       return state.isServiceAvailable;
+    },
+    errorText(state) {
+      return state.errorText;
+    },
+    errorSnackbar(state){
+      return state.errorSnackbar;
+    },
+    successText(state) {
+      return state.successText;
+    },
+    successSnackbar(state){
+      return state.successSnackbar;
+    },
+    dialog(state){
+      return state.dialog
+    },
+    dialogText(state){
+      return state.dialogText
     }
   }
 };

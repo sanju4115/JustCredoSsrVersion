@@ -1,6 +1,6 @@
-import createPersistedState from 'vuex-persistedstate'
+// import createPersistedState from 'vuex-persistedstate'
 
-//persits states even after page refresh
-export default ({store}) => {
-  createPersistedState()(store)
-}
+// //persits states even after page refresh
+// export default ({store}) => {
+//   createPersistedState()(store)
+// }

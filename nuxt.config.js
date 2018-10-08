@@ -9,14 +9,23 @@ module.exports = {
   ** Headers of the page
   */
   head: {
-    title: pkg.name,
+    title: "JustCredo - Educational Networking",
     meta: [
       { charset: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { hid: "description", name: "description", content: pkg.description }
+      { 
+        hid: "description", 
+        name: "description", 
+        content: "Search educational places(school, coaching,"+
+                 "music class, sports class, art class) here, create educational "+
+                "place profile here. Read reviews and blogs of educational places." 
+      },
+      { hid: 'keywords', name: 'keywords', 
+        content: 'schools, coachings, sports, music, tutors, class, education, ratings, reviews' 
+      }
     ],
     link: [
-      { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
+      { rel: "icon", type: "image/x-icon", href: "/ic_launcher_rect.png" },
       {
         rel: "stylesheet",
         href:
@@ -42,7 +51,8 @@ module.exports = {
     "@/plugins/vuetify",
     "@/plugins/fireauth",
     "@/plugins/location",
-    { src: "@/plugins/localStorage.js", ssr: false }
+    //{ src: "@/plugins/localStorage.js", ssr: false }
+    //{ src: "~plugins/quill-editor.js", ssr: false }
   ],
 
   /*
@@ -50,13 +60,18 @@ module.exports = {
   */
   modules: [
     // Doc: https://github.com/nuxt-community/axios-module#usage
-    "@nuxtjs/axios"
+    "@nuxtjs/axios",
+    'cookie-universal-nuxt' //for cookie storage
   ],
   /*
   ** Axios module configuration
   */
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
+  },
+
+  router: {
+    middleware: 'router-auth'
   },
 
   /*

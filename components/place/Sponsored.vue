@@ -86,7 +86,9 @@ export default {
     };
   },
   created() {
-    const placeType = "placeType" + "." + this.category.key;
+    let location = this.$store.getters["location/location"];
+    if(location !== undefined && location !== null){
+      const placeType = "placeType" + "." + this.category.key;
     db
       .collection("schools")
       .where("published", "==", true)
@@ -94,7 +96,7 @@ export default {
       .where(
         "location.geohash50",
         "==",
-        this.$store.getters["location/location"].geohash50
+        location.geohash50
       )
       .orderBy("rating", "desc")
       .limit(this.LIMIT)
@@ -120,6 +122,7 @@ export default {
         this.loading = false;
         console.log("Error getting documents: ", error);
       });
+    }
   },
   methods: {
     onClickSchool(id) {

@@ -1,72 +1,100 @@
 <template>
-  <v-container pa-0>
-    <v-layout style="width: 100%" v-if="loading">
-      <v-flex xs12 class="text-xs-center">
-        <v-progress-circular
-          indeterminate
-          class="accent--text"
-          :width="3"
-          :size="30"
-        ></v-progress-circular>
-      </v-flex>
-    </v-layout>
-    <v-layout row wrap v-else>
-      <v-flex xs12 md12 sm12>
-        <v-carousel hide-delimiters dark style="height: 400px">
-          <v-carousel-item
-            v-for="(item,i) in Object.values(model.images)"
-            :src="item" :key="i"></v-carousel-item>
-        </v-carousel>
-      </v-flex>
-    </v-layout>
-    <v-container v-if="!loading">
+  <v-container pa-0 v-if="model">
       <v-layout row wrap>
-        <v-flex xs12>
+        <v-flex xs12 pa-2>
           <v-card class="elevation-0">
             <v-card-title primary-title>
-              <div class="review">
-                <div class="headline">{{model.name}}</div>
-                <span class="grey--text">{{model.location.formatted_address}}</span>
+              <div class="display-1 font-weight-bold">
+                <v-icon x-large color="success">verified_user</v-icon>
+                {{model.name}}
               </div>
-              <v-spacer></v-spacer>
-              <v-chip disabled color="background" text-color="white">
-                <v-avatar>
-                  <v-icon>check_circle</v-icon>
-                </v-avatar>
-                Verified
-              </v-chip>
+              <div class="subheading ml-5" style="width:500px">{{model.formattedAddress}}</div>
             </v-card-title>
-            <v-card-actions>
-              <v-spacer></v-spacer>
-              <v-btn icon dark @click.native="show = !show" color="background">
-                <v-icon>{{ show ? 'keyboard_arrow_down' : 'keyboard_arrow_up' }}</v-icon>
-              </v-btn>
-            </v-card-actions>
-            <v-slide-y-transition>
-              <v-card-text v-show="show">
-                {{model.description}}
-              </v-card-text>
-            </v-slide-y-transition>
           </v-card>
         </v-flex>
-        <v-flex>
+        <v-flex xs12>
           <v-divider></v-divider>
-          <v-card class="elevation-0">
-            <v-container v-if="model.noOfRating !== 0 && model.noOfRating !== null && model.noOfRating !== undefined">
-              <v-layout row>
-                <v-flex sm2 class="mr-2">
-                  <v-chip disabled color="background" text-color="white" >
-                    {{model.rating}} Rating
-                    <v-icon right small>star</v-icon>
-                  </v-chip>
+        </v-flex>
+        <v-flex pa-2 xs12>
+          <v-card flat xs8 class="pl-2" v-if="model.noOfReviews !== 0 && model.noOfReviews !== null && model.noOfReviews !== undefined">
+            <v-card-title primary-title>
+              <div class="title font-weight-bold">
+                Rating given by people
+                <v-chip small color="light-blue darken-4" text-color="white">
+                  {{model.rating}}/10
+                  <v-icon right>star</v-icon>
+                </v-chip>
+              </div>
+              <div class="font-italic">Based on {{model.noOfReviews}} ratings and weighted average based on user's credibility on JustCredo.</div>
+            </v-card-title>             
+            <v-card-actions class="pa-3">
+              <v-layout row wrap>
+                <v-flex xs6 >
+                    Academics
+                    <span class="grey--text caption mr-2">
+                        ({{ model.ratingAcademics }})
+                    </span>
                 </v-flex>
-                <v-flex sm8>
-                  <div>Based on {{model.noOfRating}} ratings</div>
-                  <div>Weighted average based on user's credibility on JustCredo.</div>
+                <v-flex xs6>
+                  <v-rating
+                      v-model="model.ratingAcademics"
+                      readonly
+                      background-color="grey lighten-3"
+                      color="pink darken-4"
+                      length="10"
+                      dense
+                      half-increments
+                      hover
+                      size="24">
+                  </v-rating>
+                </v-flex>
+                <v-flex xs6 >
+                    Facilities
+                    <span class="grey--text caption mr-2">
+                        ({{ model.ratingFacilities }})
+                    </span>
+                </v-flex>
+                <v-flex xs6>
+                  <v-rating
+                      v-model="model.ratingFacilities"
+                      readonly
+                      background-color="grey lighten-3"
+                      color="red accent-4"
+                      length="10"
+                      dense
+                      half-increments
+                      hover
+                      size="24">
+                  </v-rating>
+                </v-flex>
+                <v-flex xs6 >
+                    Extracurricular Activities
+                    <span class="grey--text caption mr-2">
+                        ({{ model.ratingExtracurricular }})
+                    </span>
+                </v-flex>
+                <v-flex xs6>
+                  <v-rating
+                      readonly
+                      v-model="model.ratingExtracurricular"
+                      background-color="grey lighten-3"
+                      color="cyan darken-3"
+                      length="10"
+                      dense
+                      half-increments
+                      hover
+                      size="24">
+                    </v-rating>
                 </v-flex>
               </v-layout>
-            </v-container>
-            <v-divider light></v-divider>
+            </v-card-actions>
+          </v-card>
+        </v-flex>
+        <v-flex v-if="model.noOfReviews !== 0 && model.noOfReviews !== null && model.noOfReviews !== undefined">
+          <v-divider></v-divider>
+        </v-flex>
+        <v-flex>          
+          <v-card class="elevation-0">
             <v-container>
               <v-layout class="align-center">
                 <v-flex sm1 xs1>
@@ -100,28 +128,28 @@
             <v-divider></v-divider>
             <v-container>
               <v-layout row wrap>
-                <v-flex sm6 v-if="model.categories !== null && model.categories !== undefined">
+                <v-flex sm6 v-if="model.subCategories !== null && model.subCategories !== undefined">
                   <v-list dense>
                     <div class="heading ml-3" style="font-weight: bold">Categories</div>
-                    <v-list-tile v-for="(item,i) in Object.keys(model.categories)" :key="i">
+                    <v-list-tile v-for="(item,i) in model.subCategories" :key="i">
                       <v-list-tile-action>
-                        <v-icon color="blue">star</v-icon>
+                        <v-icon color="light-blue darken-4">send</v-icon>
                       </v-list-tile-action>
                       <v-list-tile-content>
-                        <v-list-tile-title v-text="item"></v-list-tile-title>
+                        <v-list-tile-title v-text="item.name"></v-list-tile-title>
                       </v-list-tile-content>
                     </v-list-tile>
                   </v-list>
                 </v-flex>
-                <v-flex sm6 v-if="model.gender !== null && model.gender !== undefined">
+                <v-flex sm6 v-if="model.genders !== null && model.genders !== undefined">
                   <v-list dense>
                     <div class="heading ml-3" style="font-weight: bold">Type</div>
-                    <v-list-tile v-for="(item,i) in Object.keys(model.gender)" :key="i" class="ma-0">
+                    <v-list-tile v-for="(item,i) in model.genders" :key="i" class="ma-0">
                       <v-list-tile-action>
                         <v-icon color="blue">star</v-icon>
                       </v-list-tile-action>
                       <v-list-tile-content dense>
-                        <v-list-tile-title v-text="item"></v-list-tile-title>
+                        <v-list-tile-title v-text="item.name"></v-list-tile-title>
                       </v-list-tile-content>
                     </v-list-tile>
                   </v-list>
@@ -130,40 +158,72 @@
             </v-container>
           </v-card>
         </v-flex>
+         <v-flex xs12>
+          <v-divider></v-divider>
+        </v-flex>
+        <v-flex pa-2>
+          <v-card flat>
+            <v-card-actions>
+              <div class="subheading font-weight-bold pa-2">
+                <v-icon medium color="info">description</v-icon>
+                Description</div>
+              <v-btn icon light @click.native="show = !show">
+                <v-icon>{{ show ? 'keyboard_arrow_down' : 'keyboard_arrow_up' }}</v-icon>
+              </v-btn>
+            </v-card-actions>
+            <v-slide-y-transition>
+              <v-card-text v-show="show">
+                {{model.description}}
+              </v-card-text>
+            </v-slide-y-transition>
+          </v-card>
+        </v-flex>
       </v-layout>
     </v-container>
-  </v-container>
-
 </template>
 
 <script>
+import config from "@/config.js";
+import axios from "axios";
+import ApiEndpoints from "@/constants/ApiEndpoints";
+
 export default {
   name: "INDEX",
+  middleware : "place",
+  asyncData({ store, params }) {
+    let educationalPlace = store.getters["school/schools"](params.id);
+    return{
+            model:educationalPlace
+          }
+  },
+  head () {
+    let model = this.model;
+    console.log(model)
+    return {
+      title: `${model.name} | ${model.formattedAddress} | Details`,
+      meta: [
+        {
+          hid: `description`,
+          name: 'description',
+          content: `${model.name} - ${model.description}`
+        },
+        {
+          hid: `keywords`,
+          name: 'keywords',
+          keywords: `${model.name},details,rating,reviews,education,feeds,
+            blogs,contact,facilities,extracurriculars,acitivities,blogs,reviews`        }
+      ]
+    }
+  },
   data: () => ({
-    show: false,
-    model:null,
-    loading:true
+    show: true,
+    loading:false,
   }),
   created(){
-    const id = this.$route.params.id;
-    const school = this.$store.getters["school/school"](id);
-    if (school === undefined || school === null) {
-      this.$store.dispatch("school/findSchool", { id: id }) //find and storing school to the store
-        .then(response => {
-          this.model = response.data;
-          this.loading = false;
-        }, error => {
-          this.loading = false;
-          console.error(error);
-          //this.$router.push(`/error?error=${error}`);
-        });
-    }else {
-      this.model = school;
-      this.loading = false;
-    }
   },
   methods:{
     onReviewClick: function () {
+      this.$router.push("/review/" + this.model.publicId);
     }
   }
 };

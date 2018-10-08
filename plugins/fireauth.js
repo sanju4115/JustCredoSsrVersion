@@ -1,56 +1,39 @@
 import firebase from "firebase";
-import db from "../services/firebaseInit";
+import config from "@/config.js";
+import axios from "axios";
+import ApiEndpoints from "@/constants/ApiEndpoints";
 
-export default (context) => {
-  const {store} = context;
-
+export default ({store, redirect, isServer,app}) => {
   return new Promise((resolve) => {
-    firebase.auth().onAuthStateChanged(user => {
-      /**
-       * Set service worker registered false as browser refresh
-       */
-      store.dispatch("login/setServiceWorkerRegistered", false);
-      store.dispatch("school/clearSchools");
+    firebase.auth().onAuthStateChanged(async user => {
+      store.dispatch("login/setServiceWorkerRegistered", false); // Set service worker registered false as browser refresh
       if (user) {
-        const docRef = db.collection("users").doc(user.uid);
-        docRef.get().then(function(doc) {
-          if (doc.exists) {
-            console.log("User already exist:", doc.data());
-          } else {
-            const newUser = {
-              name : user.displayName,
-              email : user.email,
-              emailVerified : user.emailVerified,
-              profilePic : user.photoURL,
-              uid : user.uid,
-              providerData : user.providerData
-            };
-            docRef.set(newUser)
-              .then(function() {
-                console.log("Document successfully written!");
-              })
-              .catch(function(error) {
-                console.error("Error writing document: ", error);
-              });
-          }
-        }).catch(function(error) {
-          console.log("Main.js onAuthStateChanged Error getting document:", error);
-        });
-
-        /**
-         * Auto sign in
-         */
-        store.dispatch("login/autoSignIn", user);
-
-      }else {
-        /**
-         * User session ended
-         * so clear user and location
-         */
-        store.dispatch("location/clearLocation");
-        store.dispatch("login/clearUser");
+        console.log("Authentication changed")
+        store.dispatch("shared/setDialogText", "Signing In");
+        store.dispatch("shared/setDialog", true);
+        try {
+          var response = await axios.get(
+            config.baseUrl + ApiEndpoints.SIGN_IN_BY_FIREBASE_UID,{
+                params: {
+                  firebaseUid: user.uid,
+                }
+            });
+            let idToken = await firebase.auth().currentUser.getIdToken(/* forceRefresh */ true);
+            if (idToken) {
+                app.$cookies.set('firebase-user-token', idToken)
+            }
+            store.dispatch("login/autoSignIn", response.data);
+        } catch (error) {
+          console.log("Error response ==>",error.response, error)
+        }
+      } else {
+        
       }
+      console.log("Authentication changed")
+      store.dispatch("shared/setDialog", false);
+      store.dispatch("shared/setDialogText", "");
       resolve()
-    })
+    });
+    
   })
 }

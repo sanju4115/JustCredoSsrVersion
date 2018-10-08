@@ -130,7 +130,7 @@ export default {
         errorText: "Please enter valid mobile or phone number.",
         errorSnackbar: true
       };
-    } else if (website.trim() !== "" && !Util.isUrl(website)) {
+    } else if (website.trim() === "" && !Util.isUrl(website)) {
       return {
         valid: false,
         errorText: "Please enter valid website.",
@@ -143,7 +143,7 @@ export default {
           "Description should be more than 100 characters. It helps in better user experience.",
         errorSnackbar: true
       };
-    } else if (location === null || location.formatted_address.trim() === "") {
+    } else if (location === null || location.formattedAddress.trim() === "") {
       return {
         valid: false,
         errorText:

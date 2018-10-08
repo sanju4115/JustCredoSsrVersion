@@ -15,12 +15,12 @@
           <small>You can select multiple</small>
         </v-stepper-step>
         <v-stepper-content step="1">
-          <v-card class="ma-2">
+          <v-card class="ma-2" flat>
             <v-container fluid>
               <CategoriesAndGender
-                :categories="formData.categories"
+                :categories="formData.subCategoryNames"
                 :school-type="schoolType"
-                :genders="formData.gender"
+                :genders="formData.genderNames"
                 :gender-list="genderList"
                 @change-schoolType="schoolType = $event"
                 @change-genderList="genderList = $event"></CategoriesAndGender>
@@ -31,7 +31,7 @@
         </v-stepper-content>
         <v-stepper-step step="2" :complete="schoolForm > 2">Description</v-stepper-step>
         <v-stepper-content step="2">
-          <v-card class="ma-2">
+          <v-card class="ma-2" flat>
             <Description
               :school-name="schoolName" @change-schoolName="schoolName = $event"
               :mobile="mobile" @change-mobile="mobile = $event"
@@ -47,11 +47,11 @@
         </v-stepper-content>
         <v-stepper-step step="3" :complete="schoolForm > 3">Select boards and classes</v-stepper-step>
         <v-stepper-content step="3">
-          <v-card class="ma-2">
+          <v-card class="ma-2" flat>
             <BoardsAndClasses
-              :boards="formData.boards"
+              :boards="formData.educationalBoardNames"
               :boards-list="boards" @change-boardsList="boards = $event"
-              :classes="formData.classes"
+              :classes="formData.educationalClassNames"
               :classes-list="classes" @change-classesList="classes = $event"></BoardsAndClasses>
           </v-card>
           <v-btn color="primary" @click.native="validation">Continue</v-btn>
@@ -59,14 +59,14 @@
         </v-stepper-content>
         <v-stepper-step step="4" :complete="schoolForm > 4">Select facilities provided </v-stepper-step>
         <v-stepper-content step="4">
-          <v-card class="ma-2">
+          <v-card class="ma-2" flat>
             <FacilitiesLike
               entityType="School"
-              :facilities="formData.facilities"
+              :facilities="formData.facilityNames"
               :facilities-selected="facilities"
-              :special-facilities="formData.specialFacilities"
+              :special-facilities="formData.specialFacilityNames"
               :special-facilities-selected="specialFacilities"
-              :extracurricular="formData.extracurricular"
+              :extracurricular="formData.extracurricularNames"
               :extracurricular-selected="extracurricular"
               @change-specialFacilitiesSelected="specialFacilities = $event"
               @change-facilitiesSelected="facilities = $event"
@@ -77,7 +77,7 @@
         </v-stepper-content>
         <v-stepper-step step="5">Upload Photos </v-stepper-step>
         <v-stepper-content step="5">
-          <v-card class="ma-2">
+          <v-card class="ma-2" flat>
             <v-container>
               <p style="font-weight: bold;">Choose cover pic(image can be zoomed
                 and cropped by dragging image in any direction)</p>
@@ -101,13 +101,6 @@
         </v-stepper-content>
       </v-stepper>
     </v-flex>
-    <v-snackbar
-      color="error"
-      bottom
-      v-model="errorSnackbar">
-      {{ errorText }}
-      <v-btn dark flat @click.native="errorSnackbar = false">Close</v-btn>
-    </v-snackbar>
     <v-dialog v-model="savingDialogue" persistent max-width="500px">
       <v-card>
         <v-card-title  class="justify-center">
@@ -123,7 +116,6 @@
 
 <script>
 import db from "@/services/firebaseInit";
-import VuetifyGoogleAutocomplete from "vuetify-google-autocomplete";
 import Address from "./Address";
 import firebase from "firebase";
 import SchoolUtil from "../../utils/SchoolUtil";
@@ -135,6 +127,9 @@ import AddressWithFetch from "@/components/utils/formUtil/AddressWithFetch";
 import BoardsAndClasses from "@/components/utils/formUtil/BoardsAndClasses";
 import FacilitiesLike from "@/components/utils/formUtil/FacilitiesLike";
 import EntityConstants from "../../utils/EntityConstants";
+import config from "@/config.js";
+import axios from "axios";
+import ApiEndpoints from "@/constants/ApiEndpoints";
 
 export default {
   name: "SchoolForm",
@@ -144,8 +139,7 @@ export default {
     AddressWithFetch,
     Description,
     CategoriesAndGender,
-    Address,
-    VuetifyGoogleAutocomplete
+    Address
   },
   data() {
     return {
@@ -170,39 +164,38 @@ export default {
       extracurricular: [],
       imageUrl: "",
       coverPic: {},
-      errorText: null,
-      errorSnackbar: false,
       savingDialogue: false
     };
   },
-  created() {
-    /**
-     * Queries on thd db to fetch school form data
-     */
-    db.collection("filter")
-      .doc("schoolFilters")
-      .get()
-      .then(doc => {
-        if (doc.exists) {
-          this.formData = doc.data();
-          console.log(this.formData);
-        } else {
-          this.$router.push(`/error?error=${"No such document!"}`);
-        }
+  async created() {
+    try {
+      let idToken = this.$cookies.get('firebase-user-token');
+      console.log(idToken);
+      try {
+        let { data } = await axios.get(config.baseUrl + ApiEndpoints.GET_FORM_DATA_FOR_SCHOOL,{
+                                  headers: {'X-Authorization-Firebase': idToken},
+                                  params: {
+                                  categoryId: 6,
+                                }
+        });
+        
+        this.formData = data;
         this.loading = false;
-      })
-      .catch(error => {
-        this.$router.push(`/error?error=${error}`);
-      });
+      } catch (error) {
+          console.log("Error inApiEndpoints.GET_FORM_DATA_FOR_SCHOOL ==>",error.response);
+      }
+    } catch (error) {
+      console.log("Error in getting the token ==>",error);
+    }
   },
   methods: {
     saveSchool: function(snapshot, newSchoolRef, placeType) {
       const school = {
+        locationDTO: this.location,
         coverPic: snapshot.downloadURL,
         images: [snapshot.downloadURL],
-        location: this.location,
         boards: Util.listToObject(this.boards),
-        categories: Util.listToObject(this.schoolType),
+        subCategories: Util.listToObject(this.schoolType),
         classes: Util.listToObject(this.classes),
         description: this.description,
         extracurricular: Util.listToObject(this.extracurricular),
@@ -226,14 +219,10 @@ export default {
         .set(school)
         .then(() => {
           this.savingDialogue = false;
-          console.log(newSchoolRef.id);
-          console.log(snapshot.downloadURL);
-          console.log("Document successfully written!");
         })
         .catch(error => {
-          this.errorText = "Something went wrong. Please try again";
-          console.log("Error in writing doc : " + error);
-          this.errorSnackbar = true;
+          this.$store.dispatch("shared/setErrorText","Something went wrong. Please try again");
+          this.$store.dispatch("shared/setErrorSnackbar",true);
         });
     },
     /**
@@ -245,23 +234,81 @@ export default {
      *
      * After saving the data it takes the user to the school detail page
      */
-    submitForm() {
+    async submitForm() {
       this.savingDialogue = true;
       const newSchoolRef = db.collection("draft_schools").doc();
-      const placeType = SchoolUtil.getPlaceType(this.schoolType);
-      this.coverPic.generateBlob(
-        blob => {
-          console.log(blob);
-          let storageRef = firebase.storage().ref();
-          storageRef
-            .child("school_photos/" + newSchoolRef.id)
-            .child(
-              this.coverPic.getChosenFile().name + "_" + new Date().getTime()
-            )
-            .put(blob)
-            .then(snapshot => {
-              this.saveSchool(snapshot, newSchoolRef, placeType);
-            });
+      this.coverPic.generateBlob( async blob => {
+          const school = {
+            locationDTO: this.location,
+            boards: this.boards,
+            subCategories: this.schoolType,
+            classes: this.classes,
+            description: this.description,
+            extracurricular: this.extracurricular,
+            facilities: this.facilities,
+            specialFacilities: this.specialFacilities,
+            gender: this.genderList,
+            mail: this.email,
+            mobileNumber: this.mobile,
+            website: this.website,
+            name: this.schoolName,
+          };
+
+          var formData = new FormData();
+          formData.append("coverPic", blob);
+          formData.append("schoolDetailRequest", JSON.stringify(school));
+          try {
+          let idToken = this.$cookies.get('firebase-user-token');
+            try {
+              let { data } = await axios.post(
+                config.baseUrl + ApiEndpoints.POST_SCHOOL_DETAIL,
+                formData, {
+                headers: {
+                  'X-Authorization-Firebase': idToken,
+                   'Content-Type': 'multipart/form-data'
+                }
+              });
+            } catch (error) {
+                console.log("Error in ApiEndpoints.GET_FORM_DATA_FOR_SCHOOL ==>",error.response);
+            }
+          } catch (error) {
+            console.log("Error in getting the token ==>",error);
+          }
+
+          // var formData = new FormData();
+          // formData.append("coverPic", blob);
+          // formData.append("schoolDetailDTO", JSON.stringify(school));
+          
+          // try {
+          // let idToken = await firebase.auth().currentUser.getIdToken(/* forceRefresh */ true);
+          // console.log(idToken);
+          //   try {
+          //     let { data } = await axios.post(
+          //       config.baseUrl + "/api/client/addPlace/submitSchool",
+          //       formData, {
+          //       headers: {
+          //         'X-Authorization-Firebase': idToken,
+          //         'Content-Type': 'multipart/form-data'
+          //       }
+          //     });
+          //   } catch (error) {
+          //       console.log("Error inApiEndpoints.GET_FORM_DATA_FOR_SCHOOL ==>",error.response);
+          //   }
+          // } catch (error) {
+          //   console.log("Error in getting the token ==>",error);
+          // }
+
+
+          // let storageRef = firebase.storage().ref();
+          // storageRef
+          //   .child("school_photos/" + newSchoolRef.id)
+          //   .child(
+          //     this.coverPic.getChosenFile().name + "_" + new Date().getTime()
+          //   )
+          //   .put(blob)
+          //   .then(snapshot => {
+          //     this.saveSchool(snapshot, newSchoolRef, placeType);
+          //   });
         },
         "image/jpeg",
         1
@@ -279,10 +326,14 @@ export default {
         if (result.valid) {
           this.schoolForm = 2;
         } else {
-          this.errorText = result.errorText;
-          this.errorSnackbar = result.errorSnackbar;
+          this.$store.dispatch("shared/setErrorText",result.errorText);
+          this.$store.dispatch("shared/setErrorSnackbar",result.errorSnackbar);
         }
       } else if (this.schoolForm === 2) {
+        console.log(this.schoolName)
+        console.log(this.email)
+        console.log(this.mobile)
+        console.log(this.website)
         const result = SchoolFormValidation.validateDescription(
           this.schoolName,
           this.email,
@@ -294,8 +345,8 @@ export default {
         if (result.valid) {
           this.schoolForm = 3;
         } else {
-          this.errorText = result.errorText;
-          this.errorSnackbar = result.errorSnackbar;
+          this.$store.dispatch("shared/setErrorText",result.errorText);
+          this.$store.dispatch("shared/setErrorSnackbar",result.errorSnackbar);
         }
       } else if (this.schoolForm === 3) {
         const result = SchoolFormValidation.validateBoardAndClass(
@@ -315,10 +366,10 @@ export default {
           this.extracurricular
         );
         if (result.valid) {
-          this.schoolForm = 4;
+          this.schoolForm = 5;
         } else {
-          this.errorText = result.errorText;
-          this.errorSnackbar = result.errorSnackbar;
+          this.$store.dispatch("shared/setErrorText",result.errorText);
+          this.$store.dispatch("shared/setErrorSnackbar",result.errorSnackbar);
         }
       } else if (this.schoolForm === 5) {
         const result = SchoolFormValidation.validateCoverPicAndSubmit(
@@ -327,8 +378,8 @@ export default {
         if (result.valid) {
           this.submitForm();
         } else {
-          this.errorText = result.errorText;
-          this.errorSnackbar = result.errorSnackbar;
+          this.$store.dispatch("shared/setErrorText",result.errorText);
+          this.$store.dispatch("shared/setErrorSnackbar",result.errorSnackbar);
         }
       }
     }

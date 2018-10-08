@@ -1,5 +1,9 @@
 import * as firebase from "firebase";
 import db from "../services/firebaseInit";
+import config from "@/config.js";
+import axios from "axios";
+import ApiEndpoints from "@/constants/ApiEndpoints";
+
 
 export default {
   namespaced: true,
@@ -19,23 +23,7 @@ export default {
       state.user = payload.data;
     },
     setUser(state, payload) {
-      console.log("setUser")
-      if (payload === null || payload === undefined) {
-        state.user = null;
-      } else {
-        const docRef = db.collection("users").doc(payload.uid);
-        docRef.get().then(doc => {
-          if (doc.exists) {
-            console.log(doc.data())
-            state.user = doc.data();
-            console.log(state.user)
-          }else {
-            //handleLocationError(false);
-          }
-        }).catch(function(error) {
-          console.log("Shared index.js setUser error getting document:", error);
-        });
-      }
+      state.user = payload;
     },
     setLoginError(state, payload) {
       state.loginError = payload;
@@ -65,43 +53,46 @@ export default {
     clearUser({ commit }){
       commit("clearUser");
     },
+
     setUser({ commit}, payload){
       commit("setUpdatedUser",payload);
     },
+
     signUserIn({ commit, state }, payload) {
-      commit("setLoading", true);
-      commit("clearLoginError");
-      firebase
-        .auth()
-        .signInWithEmailAndPassword(payload.email, payload.password)
-        .then(user => {
-          commit("shared/setLoading", false);
-          const newUser = {
-            uid: user.uid
-          };
-          commit("shared/setUser", newUser);
-          afterSignInUserSpecificTask(commit, state, newUser);
-        })
-        .catch(error => {
-          commit("setLoading", false);
+      return new Promise(async (resolve, reject) => {
+        commit("setLoading", true);
+        commit("clearLoginError");
+        try {
+          let user = await firebase
+          .auth()
+          .signInWithEmailAndPassword(payload.email, payload.password);
+        } catch (error) {
           commit("setLoginError", error);
-        });
+          reject();
+        }
+        commit("setLoading", false);
+        resolve();
+      });
     },
+
     clearLoginError({ commit }) {
       commit("clearLoginError");
     },
+
     autoSignIn({ commit, state }, payload) {
-      console.log("autosignin")
       commit("setLoading", false);
-      commit("setUser", { uid: payload.uid });
-      afterSignInUserSpecificTask(commit, state, payload)
+      commit("setUser", payload);
+      //afterSignInUserSpecificTask(commit, state, payload)
     },
+
     setServiceWorkerRegistered({ commit},payload){
       commit("setServiceWorkerRegistered",payload);
     },
+
     setIsUserAdmin({ commit},payload){
       commit("setIsUserAdmin",payload);
     },
+
     logout({ commit }) {
       firebase.auth().signOut();
       commit("setUser", null);

@@ -6,7 +6,7 @@
         <div>This help us in showing you contents <br>in near by your location.</div>
       </div>
     </v-card-title>
-    <VuetifyGoogleAutocomplete
+    <!-- <VuetifyGoogleAutocomplete
       id="map"
       append-icon="search"
       solo inverted dark
@@ -14,7 +14,7 @@
       placeholder="Search Address"
       v-on:placechanged="getAddressData"
       country="in">
-    </VuetifyGoogleAutocomplete>
+    </VuetifyGoogleAutocomplete> -->
     <v-layout align-center text-xs-center row wrap>
       <v-flex xs12 sm12 text-xs-center>
         <div>
@@ -42,39 +42,38 @@
 </template>
 
 <script>
-import VuetifyGoogleAutocomplete from "vuetify-google-autocomplete";
 export default {
   name: "PlaceLocation",
-  components: { VuetifyGoogleAutocomplete },
+  components: {  },
   methods: {
     /**
      * Fetches location by using google's place api
      * After fetching the location it store location in the store
      */
-    getAddressData: function(addressData, placeResultData) {
-      if (
-        addressData !== null &&
-        addressData !== undefined &&
-        placeResultData !== null &&
-        placeResultData !== undefined
-      ) {
-        console.log("location changed to==>", addressData, placeResultData);
-        this.$store
-          .dispatch("location/saveLocation", {
-            addressData: addressData,
-            placeResultData: placeResultData
-          })
-          .then(
-            response => {
-              this.$emit("locationSaved");
-              this.$router.push("/");
-            },
-            error => {
-              console.error(error);
-            }
-          );
-      }
-    },
+    // getAddressData: function(addressData, placeResultData) {
+    //   if (
+    //     addressData !== null &&
+    //     addressData !== undefined &&
+    //     placeResultData !== null &&
+    //     placeResultData !== undefined
+    //   ) {
+    //     console.log("location changed to==>", addressData, placeResultData);
+    //     this.$store
+    //       .dispatch("location/saveLocation", {
+    //         addressData: addressData,
+    //         placeResultData: placeResultData
+    //       })
+    //       .then(
+    //         response => {
+    //           this.$emit("locationSaved");
+    //           this.$router.push("/loader");
+    //         },
+    //         error => {
+    //           console.error(error);
+    //         }
+    //       );
+    //   }
+    //},
     onClose() {
       this.$emit("closeLocationPopup");
     },
@@ -90,7 +89,7 @@ export default {
       this.$store.dispatch("location/fetchUserLocation").then(
         response => {
           this.$emit("locationSaved");
-          this.$router.push("/");
+          this.$router.push("/loader");
         },
         error => {
           console.error(error);
@@ -109,7 +108,9 @@ export default {
       return this.$store.getters["location/loading"];
     },
     location() {
-      return this.$store.getters["location/location"];
+      const location = this.$store.getters["location/location"]
+      this.$cookies.set("location", location);
+      return location;
     }
   }
 };
